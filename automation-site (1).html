@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexFlow — 10x your outreach. One fixed cost.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0C1B;
+  --bg2:#0D1028;
+  --bg3:#111530;
+  --bg4:#151934;
+  --violet:#6B48FF;
+  --violet2:#7C5CFF;
+  --violet3:#9B7FFF;
+  --violet-dim:rgba(107,72,255,0.15);
+  --violet-glow:rgba(107,72,255,0.3);
+  --red:#E8514A;
+  --red-dim:rgba(232,81,74,0.2);
+  --green:#22C55E;
+  --green-dim:rgba(34,197,94,0.15);
+  --cyan:#38BDF8;
+  --white:#FFFFFF;
+  --g1:#94A3B8;
+  --g2:#64748B;
+  --g3:#334155;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(107,72,255,0.35);
+  --card:rgba(13,16,40,0.9);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;font-size:15px}
+
+/* GRID BG */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(107,72,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(107,72,255,0.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0
+}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;display:flex;align-items:center;padding:0 40px;background:rgba(10,12,27,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-0.5px;text-decoration:none;color:var(--white);margin-right:40px}
+.nav-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--violet),#A78BFA);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-menu{display:flex;align-items:center;gap:2px;flex:1}
+.nav-item{position:relative}
+.nav-btn{display:flex;align-items:center;gap:5px;padding:8px 14px;border-radius:8px;background:none;border:none;color:var(--g1);font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;white-space:nowrap}
+.nav-btn:hover,.nav-btn.active{color:var(--white);background:rgba(255,255,255,0.05)}
+.nav-btn svg{width:14px;height:14px;transition:transform 0.2s;opacity:0.6}
+.nav-item:hover .nav-btn svg{transform:rotate(180deg)}
+.nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dropdown{
+  position:absolute;top:calc(100% + 8px);left:0;min-width:220px;
+  background:#151830;border:1px solid var(--border);border-radius:12px;
+  padding:8px;opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:all 0.2s;box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:100
+}
+.nav-dropdown.wide{min-width:480px;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.dd-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:background 0.15s;text-decoration:none}
+.dd-item:hover{background:rgba(255,255,255,0.05)}
+.dd-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:1px}
+.dd-icon.v{background:var(--violet-dim)}
+.dd-icon.r{background:rgba(232,81,74,0.12)}
+.dd-icon.g{background:var(--green-dim)}
+.dd-icon.c{background:rgba(56,189,248,0.1)}
+.dd-label{font-size:13px;font-weight:600;color:var(--white);margin-bottom:2px}
+.dd-desc{font-size:12px;color:var(--g2);line-height:1.4}
+.dd-divider{height:1px;background:var(--border);margin:6px 0;grid-column:1/-1}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.btn-login{padding:8px 18px;border-radius:8px;background:none;border:1px solid var(--border);color:var(--g1);font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;text-decoration:none}
+.btn-login:hover{border-color:var(--border2);color:var(--white)}
+.btn-demo{padding:8px 18px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--white);font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;text-decoration:none}
+.btn-demo:hover{background:rgba(255,255,255,0.1)}
+.btn-start{padding:9px 20px;border-radius:8px;background:var(--violet);border:none;color:var(--white);font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;text-decoration:none;box-shadow:0 0 24px var(--violet-glow)}
+.btn-start:hover{background:var(--violet2);transform:translateY(-1px);box-shadow:0 4px 32px var(--violet-glow)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 80px 60px;position:relative;overflow:hidden;gap:60px}
+.hero-glow{position:absolute;top:0;right:0;width:700px;height:700px;background:radial-gradient(ellipse at top right,rgba(107,72,255,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:0;left:200px;width:500px;height:400px;background:radial-gradient(ellipse,rgba(107,72,255,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-left{flex:1;max-width:600px;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:100px;background:rgba(107,72,255,0.1);border:1px solid rgba(107,72,255,0.25);font-size:12px;font-weight:600;color:var(--violet3);margin-bottom:28px;letter-spacing:0.02em}
+.badge-live{width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 6px #22C55E;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:clamp(36px,4.5vw,64px);font-weight:900;line-height:1.06;letter-spacing:-2.5px;margin-bottom:20px}
+.hero h1 .accent{color:var(--violet3)}
+.hero-sub{font-size:17px;color:var(--g1);line-height:1.7;margin-bottom:32px;max-width:500px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.hero-tag{padding:4px 14px;border-radius:100px;font-size:13px;font-weight:600;border:1px solid}
+.hero-tag.orange{color:#FB923C;border-color:rgba(251,146,60,0.3);background:rgba(251,146,60,0.08)}
+.hero-tag.red{color:var(--red);border-color:var(--red-dim);background:var(--red-dim)}
+.hero-tag.violet{color:var(--violet3);border-color:var(--violet-dim);background:var(--violet-dim)}
+.hero-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn-hero-main{padding:13px 28px;border-radius:10px;background:var(--violet);border:none;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.25s;text-decoration:none;box-shadow:0 0 40px var(--violet-glow)}
+.btn-hero-main:hover{background:var(--violet2);transform:translateY(-2px);box-shadow:0 6px 48px var(--violet-glow)}
+.btn-hero-ghost{padding:13px 24px;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--g1);font-size:15px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;text-decoration:none;display:flex;align-items:center;gap:8px}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,0.15);color:var(--white)}
+.hero-trust{margin-top:36px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.trust-avatars{display:flex}
+.trust-av{width:28px;height:28px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff}
+.trust-av:first-child{margin-left:0}
+.trust-text{font-size:13px;color:var(--g1)}
+.trust-text strong{color:var(--white)}
+.trust-sep{width:1px;height:24px;background:var(--border)}
+.trust-rating{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--g1)}
+.stars{color:#FCD34D;letter-spacing:1px;font-size:12px}
+
+/* ── HERO UI MOCKUP ── */
+.hero-right{flex:1;position:relative;z-index:1;min-height:480px;max-width:620px}
+.mockup-inbox{
+  position:absolute;top:0;left:0;width:320px;
+  background:#111630;border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,0.6)
+}
+.mock-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.mock-tabs{display:flex;gap:4px}
+.mock-tab{padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;color:var(--g2)}
+.mock-tab.active{background:rgba(255,255,255,0.08);color:var(--white)}
+.mock-badge{background:var(--violet);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:100px;margin-left:4px}
+.mock-search{margin:10px 12px;padding:7px 12px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--g2);display:flex;align-items:center;gap:8px}
+.mock-row{padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.03);transition:background 0.15s;cursor:pointer}
+.mock-row:hover{background:rgba(255,255,255,0.02)}
+.mock-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#fff}
+.mock-info{flex:1;min-width:0}
+.mock-name{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.mock-msg{font-size:11px;color:var(--g2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.mock-time{font-size:10px;color:var(--g2)}
+.pill-interested{padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;background:rgba(34,197,94,0.15);color:#22C55E;border:1px solid rgba(34,197,94,0.2)}
+.pill-hot{padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.2)}
+
+.mockup-senders{
+  position:absolute;top:20px;right:0;width:260px;
+  background:#111630;border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;
+  box-shadow:0 24px 80px rgba(0,0,0,0.5)
+}
+.ms-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.ms-title{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.ms-count{background:var(--violet-dim);color:var(--violet3);padding:1px 7px;border-radius:100px;font-size:11px;font-weight:700}
+.ms-add{font-size:11px;color:var(--violet3);cursor:pointer;padding:4px 10px;border:1px solid var(--border2);border-radius:6px;background:var(--violet-dim)}
+.ms-row{padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.ms-check{width:16px;height:16px;border-radius:4px;background:var(--violet);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px}
+.ms-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:#fff}
+.ms-info{flex:1}
+.ms-name{font-size:12px;font-weight:600}
+.ms-email{font-size:10px;color:var(--g2)}
+.ms-status{padding:2px 7px;border-radius:100px;font-size:10px;font-weight:600;background:var(--green-dim);color:var(--green)}
+
+.mockup-stats{
+  position:absolute;bottom:0;left:40px;right:20px;
+  background:#111630;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;
+  box-shadow:0 24px 80px rgba(0,0,0,0.5)
+}
+.mst-title{font-size:11px;color:var(--g2);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.08em}
+.mst-row{display:flex;gap:16px}
+.mst-item{flex:1;text-align:center}
+.mst-val{font-size:22px;font-weight:800;letter-spacing:-1px}
+.mst-label{font-size:10px;color:var(--g2);margin-top:2px}
+.mst-bar{height:3px;border-radius:100px;margin-top:12px;background:var(--bg3);overflow:hidden}
+.mst-bar-fill{height:100%;border-radius:100px;animation:barGrow 2s 0.5s ease both}
+@keyframes barGrow{from{width:0}}
+
+/* ── TRUST STRIP ── */
+.trust-strip{padding:40px 80px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center;position:relative;z-index:1}
+.trust-strip-top{display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:36px;flex-wrap:wrap}
+.trust-strip-badge{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--g1)}
+.trust-strip-badge strong{color:var(--white)}
+.trust-sep2{width:1px;height:20px;background:var(--border)}
+.company-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px}
+.company-chip{font-size:14px;font-weight:700;color:var(--g2);letter-spacing:-0.3px;transition:color 0.2s;cursor:default;display:flex;align-items:center;gap:8px}
+.company-chip:hover{color:var(--g1)}
+.company-chip .chip-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px}
+.chip-case{background:rgba(56,189,248,0.1);color:var(--cyan)}
+.chip-testi{background:rgba(251,146,60,0.1);color:#FB923C}
+
+/* ── SECTION COMMONS ── */
+.section{padding:100px 80px;position:relative;z-index:1}
+.section-center{text-align:center}
+.eyebrow{font-size:12px;font-weight:600;color:var(--violet3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.eyebrow.center{justify-content:center}
+.eyebrow::before{content:'';width:18px;height:1.5px;background:var(--violet3)}
+.eyebrow.center::before{display:none}
+h2.sh{font-size:clamp(28px,3.5vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.08;margin-bottom:16px}
+.sh-sub{font-size:16px;color:var(--g1);max-width:520px;line-height:1.75}
+.sh-sub.center{margin:0 auto}
+
+/* ── FEATURE SECTIONS ── */
+.feature-block{display:flex;align-items:center;gap:80px;padding:80px;background:var(--bg2);border-radius:20px;margin-bottom:16px;overflow:hidden;position:relative;border:1px solid var(--border)}
+.feature-block:nth-child(even){flex-direction:row-reverse}
+.feature-block-glow{position:absolute;top:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(107,72,255,0.08),transparent 70%);pointer-events:none}
+.fb-text{flex:1}
+.fb-visual{flex:1;position:relative}
+
+/* sender orbit */
+.orbit-wrap{width:300px;height:300px;position:relative;margin:0 auto}
+.orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--violet),#A78BFA);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 0 40px var(--violet-glow)}
+.orbit-ring{position:absolute;top:50%;left:50%;border:1px dashed rgba(107,72,255,0.2);border-radius:50%;transform:translate(-50%,-50%)}
+.orbit-ring1{width:180px;height:180px}
+.orbit-ring2{width:290px;height:290px}
+.orbit-av{position:absolute;width:42px;height:42px;border-radius:50%;border:2px solid var(--bg2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;transform:translate(-50%,-50%)}
+.orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--violet3);box-shadow:0 0 6px var(--violet3)}
+.sender-list-mock{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:16px}
+.slm-header{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.slm-add{color:var(--violet3);cursor:pointer;font-size:12px}
+
+/* workflow builder mock */
+.wf-mock{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative}
+.wf-node{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.03);display:flex;align-items:center;gap:10px;margin-bottom:8px;transition:all 0.3s;cursor:default}
+.wf-node:hover{border-color:var(--border2);background:rgba(107,72,255,0.06)}
+.wf-node-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.wf-node-label{font-size:13px;font-weight:500}
+.wf-node-sub{font-size:11px;color:var(--g2)}
+.wf-arrow{text-align:center;color:var(--g3);font-size:18px;margin:2px 0;position:relative}
+.wf-arrow::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:1px;height:24px;background:rgba(107,72,255,0.2)}
+.wf-add{text-align:center;padding:8px;border:1px dashed var(--border2);border-radius:8px;color:var(--violet3);font-size:12px;cursor:pointer;transition:all 0.2s}
+.wf-add:hover{background:var(--violet-dim)}
+
+/* voice ai mock */
+.voice-mock{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.vm-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.vm-call-status{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--green)}
+.vm-pulse{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 1s infinite}
+.vm-transcript{padding:14px 16px;max-height:180px;overflow:hidden}
+.vm-line{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.vm-speaker{font-size:10px;font-weight:700;white-space:nowrap;margin-top:2px;min-width:36px}
+.vm-ai{color:var(--violet3)}
+.vm-human{color:var(--cyan)}
+.vm-bubble{padding:7px 11px;border-radius:8px;font-size:12px;line-height:1.5}
+.vm-bubble.ai{background:var(--violet-dim);color:var(--g1)}
+.vm-bubble.human{background:rgba(56,189,248,0.08);color:var(--g1)}
+.vm-footer{padding:12px 16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.vm-waveform{flex:1;height:32px;display:flex;align-items:center;gap:2px}
+.vm-bar{width:3px;border-radius:100px;background:var(--violet3);animation:wave 1s ease-in-out infinite}
+.vm-bar:nth-child(2n){animation-delay:0.1s}
+.vm-bar:nth-child(3n){animation-delay:0.2s}
+.vm-bar:nth-child(4n){animation-delay:0.15s}
+@keyframes wave{0%,100%{height:4px;opacity:0.3}50%{height:22px;opacity:1}}
+
+/* ── METRICS ── */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.metric-item{padding:40px 28px;background:var(--bg2);text-align:center;transition:background 0.2s}
+.metric-item:hover{background:var(--bg3)}
+.metric-num{font-size:44px;font-weight:900;letter-spacing:-2px;line-height:1;background:linear-gradient(135deg,#fff,var(--violet3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.metric-label{font-size:13px;color:var(--g1);margin-top:8px}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1040px;margin:0 auto}
+.price-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:32px;transition:all 0.3s;position:relative}
+.price-card:hover{border-color:rgba(255,255,255,0.12);transform:translateY(-3px)}
+.price-card.featured{border-color:var(--border2);background:linear-gradient(160deg,rgba(107,72,255,0.1),var(--bg2));box-shadow:0 0 60px rgba(107,72,255,0.12)}
+.feat-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--violet),#9B7FFF);color:#fff;font-size:11px;font-weight:700;padding:3px 14px;border-radius:100px;white-space:nowrap;letter-spacing:0.04em}
+.price-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.price-desc{font-size:13px;color:var(--g2);margin-bottom:20px}
+.price-amount{font-size:46px;font-weight:900;letter-spacing:-2.5px;line-height:1}
+.price-amount sup{font-size:20px;font-weight:600;vertical-align:super;letter-spacing:0}
+.price-amount sub{font-size:14px;font-weight:400;color:var(--g2);letter-spacing:0}
+.price-billing{font-size:12px;color:var(--g2);margin-top:4px;margin-bottom:24px}
+.price-divider{height:1px;background:var(--border);margin-bottom:20px}
+.price-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--g1);margin-bottom:11px;line-height:1.5}
+.pf-check{color:var(--green);font-size:14px;flex-shrink:0;margin-top:1px}
+.btn-price{display:block;width:100%;padding:12px;border-radius:10px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all 0.2s;text-align:center;text-decoration:none;margin-top:24px}
+.btn-price-outline{background:transparent;border:1px solid var(--border2);color:var(--violet3)}
+.btn-price-outline:hover{background:var(--violet-dim)}
+.btn-price-fill{background:var(--violet);border:none;color:#fff;box-shadow:0 4px 24px var(--violet-glow)}
+.btn-price-fill:hover{background:var(--violet2);box-shadow:0 6px 36px var(--violet-glow)}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color 0.2s}
+.testi-card:hover{border-color:rgba(255,255,255,0.1)}
+.testi-stars{color:#FCD34D;font-size:13px;letter-spacing:2px;margin-bottom:12px}
+.testi-text{font-size:14px;color:var(--g1);line-height:1.75;margin-bottom:18px}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#fff}
+.testi-name{font-size:13px;font-weight:600}
+.testi-role{font-size:12px;color:var(--g2)}
+
+/* ── CTA ── */
+.cta-wrap{margin:0 80px 80px;border-radius:20px;background:linear-gradient(135deg,rgba(107,72,255,0.18) 0%,rgba(107,72,255,0.05) 100%);border:1px solid var(--border2);padding:80px;text-align:center;position:relative;overflow:hidden}
+.cta-wrap::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(107,72,255,0.2),transparent 70%);pointer-events:none}
+.cta-wrap h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:14px}
+.cta-wrap p{font-size:17px;color:var(--g1);margin-bottom:32px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:48px 80px}
+.footer-top{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:40px;margin-bottom:48px}
+.footer-brand{font-size:13px;color:var(--g2);line-height:1.7;margin-top:12px}
+.footer-col-title{font-size:13px;font-weight:700;margin-bottom:14px;color:var(--white)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:13px;color:var(--g2);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:12px;color:var(--g3)}
+.footer-socials{display:flex;gap:12px}
+.soc-btn{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;font-size:14px}
+.soc-btn:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12)}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero{flex-direction:column;padding:100px 24px 60px}
+  .hero-right{display:none}
+  .section{padding:60px 24px}
+  .feature-block{flex-direction:column!important;padding:40px 24px}
+  .pricing-grid,.testi-grid{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  nav{padding:0 20px}
+  .nav-menu{display:none}
+  .trust-strip,.cta-wrap,.footer-top{padding-left:24px;padding-right:24px}
+  .cta-wrap{margin:0 24px 60px}
+  footer{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">⚡</div>
+    NexFlow
+  </a>
+  <div class="nav-menu">
+    <div class="nav-item">
+      <button class="nav-btn">
+        Product
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown wide">
+        <a class="dd-item" href="#">
+          <div class="dd-icon v">🔗</div>
+          <div><div class="dd-label">LinkedIn Reach</div><div class="dd-desc">Multi-account automation & inbox</div></div>
+        </a>
+        <a class="dd-item" href="#">
+          <div class="dd-icon c">🎙️</div>
+          <div><div class="dd-label">Voice AI</div><div class="dd-desc">AI calling agents for lead qualification</div></div>
+        </a>
+        <a class="dd-item" href="#">
+          <div class="dd-icon g">⚙️</div>
+          <div><div class="dd-label">Custom Workflows</div><div class="dd-desc">No-code multi-channel automation builder</div></div>
+        </a>
+        <a class="dd-item" href="#">
+          <div class="dd-icon r">📊</div>
+          <div><div class="dd-label">Analytics</div><div class="dd-desc">Campaign performance & reply tracking</div></div>
+        </a>
+        <div class="dd-divider"></div>
+        <a class="dd-item" href="#">
+          <div class="dd-icon v">🔌</div>
+          <div><div class="dd-label">Integrations</div><div class="dd-desc">Clay, HubSpot, Zapier, Salesforce & more</div></div>
+        </a>
+        <a class="dd-item" href="#">
+          <div class="dd-icon g">🛡️</div>
+          <div><div class="dd-label">Account Safety</div><div class="dd-desc">Dedicated proxies, smart throttling</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-btn">
+        Resources
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a class="dd-item" href="#"><div class="dd-icon v">📖</div><div><div class="dd-label">Documentation</div><div class="dd-desc">API reference & guides</div></div></a>
+        <a class="dd-item" href="#"><div class="dd-icon g">🎓</div><div><div class="dd-label">Academy</div><div class="dd-desc">Free outreach masterclasses</div></div></a>
+        <a class="dd-item" href="#"><div class="dd-icon c">📰</div><div><div class="dd-label">Blog</div><div class="dd-desc">Tactics, case studies & news</div></div></a>
+        <a class="dd-item" href="#"><div class="dd-icon r">🎤</div><div><div class="dd-label">Webinars</div><div class="dd-desc">Live sessions with experts</div></div></a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-btn">
+        Community
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a class="dd-item" href="#"><div class="dd-icon v">💬</div><div><div class="dd-label">Slack Community</div><div class="dd-desc">4,000+ outbound practitioners</div></div></a>
+        <a class="dd-item" href="#"><div class="dd-icon g">🤝</div><div><div class="dd-label">Partner Program</div><div class="dd-desc">Refer & earn recurring commission</div></div></a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-btn">
+        Company
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a class="dd-item" href="#"><div class="dd-icon v">🏢</div><div><div class="dd-label">About us</div><div class="dd-desc">Our story & mission</div></div></a>
+        <a class="dd-item" href="#"><div class="dd-icon g">💼</div><div><div class="dd-label">Careers</div><div class="dd-desc">Join the team — 12 open roles</div></div></a>
+        <a class="dd-item" href="#"><div class="dd-icon c">📣</div><div><div class="dd-label">Press</div><div class="dd-desc">Media kit & press releases</div></div></a>
+      </div>
+    </div>
+    <a class="nav-btn" href="#pricing" style="text-decoration:none">Pricing</a>
+  </div>
+  <div class="nav-right">
+    <a class="btn-login" href="#">Log in</a>
+    <a class="btn-demo" href="#">Book a demo</a>
+    <a class="btn-start" href="#">Start for free</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-left reveal">
+    <div class="hero-badge"><span class="badge-live"></span> New · Voice AI v2.0 is live</div>
+    <h1>10x your outreach.<br><span class="accent">Unlimited senders,</span><br>one fixed cost.</h1>
+    <p class="hero-sub">For agencies, sales teams, and GTM experts who want to automate LinkedIn, Voice AI, and custom workflows — without paying per seat.</p>
+    <div class="hero-tags">
+      <span class="hero-tag orange">agencies</span>
+      <span class="hero-tag red">sales teams</span>
+      <span class="hero-tag violet">GTM experts</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#" class="btn-hero-main">Start for free →</a>
+      <a href="#" class="btn-hero-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
+        Watch 2-min demo
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-avatars">
+        <div class="trust-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">A</div>
+        <div class="trust-av" style="background:linear-gradient(135deg,#0E7490,#38BDF8)">S</div>
+        <div class="trust-av" style="background:linear-gradient(135deg,#065F46,#22C55E)">M</div>
+        <div class="trust-av" style="background:linear-gradient(135deg,#92400E,#FCD34D)">R</div>
+        <div class="trust-av" style="background:linear-gradient(135deg,#9D174D,#F472B6)">K</div>
+      </div>
+      <div class="trust-text">Trusted by <strong>6,000+ companies</strong></div>
+      <div class="trust-sep"></div>
+      <div class="trust-rating"><span class="stars">★★★★★</span> <strong style="color:#fff">4.7</strong> on G2</div>
+      <div class="trust-sep"></div>
+      <div class="trust-rating" style="font-size:12px;color:var(--g2)">🏆 2026 Fastest Growing</div>
+    </div>
+  </div>
+  <div class="hero-right reveal">
+    <!-- Inbox mock -->
+    <div class="mockup-inbox">
+      <div class="mock-header">
+        <div class="mock-tabs">
+          <div class="mock-tab active">All</div>
+          <div class="mock-tab">Unread <span class="mock-badge">7</span></div>
+          <div class="mock-tab">Favorite</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg>
+      </div>
+      <div class="mock-search">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Search conversations...
+      </div>
+      <div class="mock-row">
+        <div class="mock-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">JT</div>
+        <div class="mock-info">
+          <div class="mock-name">Julia Tan <span class="pill-interested">Interested</span></div>
+          <div class="mock-msg">That's absolutely fantastic! I'd love to...</div>
+        </div>
+        <div class="mock-time">1h</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-av" style="background:linear-gradient(135deg,#0E7490,#38BDF8)">HE</div>
+        <div class="mock-info">
+          <div class="mock-name">Helene Engels <span class="pill-hot">Hot lead 🔥</span></div>
+          <div class="mock-msg">Our campaign is steadily growing and...</div>
+        </div>
+        <div class="mock-time">1h</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-av" style="background:linear-gradient(135deg,#065F46,#22C55E)">MK</div>
+        <div class="mock-info">
+          <div class="mock-name">Marco Klein <span class="pill-interested">Interested</span></div>
+          <div class="mock-msg">Yes, let's schedule a call this week...</div>
+        </div>
+        <div class="mock-time">2h</div>
+      </div>
+      <div class="mock-row">
+        <div class="mock-av" style="background:linear-gradient(135deg,#9D174D,#F472B6)">SR</div>
+        <div class="mock-info">
+          <div class="mock-name">Sarah Reid</div>
+          <div class="mock-msg">Thank you for the connection! Looking...</div>
+        </div>
+        <div class="mock-time">3h</div>
+      </div>
+    </div>
+    <!-- Senders mock -->
+    <div class="mockup-senders">
+      <div class="ms-header">
+        <div class="ms-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B48FF" stroke-width="2"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-4a2 2 0 012-2h10a2 2 0 012 2v4"/><path d="M12 12V8"/></svg>
+          LinkedIn senders <span class="ms-count">24</span>
+        </div>
+        <div class="ms-add">+ Add senders</div>
+      </div>
+      <div class="ms-row">
+        <div class="ms-check">✓</div>
+        <div class="ms-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">AF</div>
+        <div class="ms-info"><div class="ms-name">Ammar Foley</div><div class="ms-email">ammar@acme.com</div></div>
+        <div class="ms-status">Available</div>
+      </div>
+      <div class="ms-row">
+        <div class="ms-check">✓</div>
+        <div class="ms-av" style="background:linear-gradient(135deg,#0E7490,#38BDF8)">SH</div>
+        <div class="ms-info"><div class="ms-name">Sienna Hewitt</div><div class="ms-email">sienna@acme.com</div></div>
+        <div class="ms-status">Available</div>
+      </div>
+      <div class="ms-row">
+        <div class="ms-check">✓</div>
+        <div class="ms-av" style="background:linear-gradient(135deg,#065F46,#22C55E)">LJ</div>
+        <div class="ms-info"><div class="ms-name">Loki Johnson</div><div class="ms-email">loki@acme.com</div></div>
+        <div class="ms-status">Available</div>
+      </div>
+      <div class="ms-row" style="border-bottom:none">
+        <div class="ms-check">✓</div>
+        <div class="ms-av" style="background:linear-gradient(135deg,#92400E,#FCD34D);color:#000">LJ</div>
+        <div class="ms-info"><div class="ms-name">Liam Johnson</div><div class="ms-email">liam@acme.com</div></div>
+        <div class="ms-status">Available</div>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div class="mockup-stats">
+      <div class="mst-title">Campaign · Q3 Outreach — Live</div>
+      <div class="mst-row">
+        <div class="mst-item">
+          <div class="mst-val" style="color:var(--violet3)">847</div>
+          <div class="mst-label">Sent</div>
+        </div>
+        <div class="mst-item">
+          <div class="mst-val" style="color:var(--cyan)">312</div>
+          <div class="mst-label">Accepted</div>
+        </div>
+        <div class="mst-item">
+          <div class="mst-val" style="color:var(--green)">89</div>
+          <div class="mst-label">Replies</div>
+        </div>
+        <div class="mst-item">
+          <div class="mst-val" style="color:#FCD34D">31</div>
+          <div class="mst-label">Meetings</div>
+        </div>
+      </div>
+      <div class="mst-bar"><div class="mst-bar-fill" style="width:36.9%;background:linear-gradient(90deg,var(--violet),var(--cyan))"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST STRIP ── -->
+<div class="trust-strip">
+  <div class="trust-strip-top">
+    <div class="trust-strip-badge">🏅 <strong>Trusted by 6,000+ companies</strong></div>
+    <div class="trust-sep2"></div>
+    <div class="trust-strip-badge"><span class="stars" style="font-size:12px">★★★★★</span> &nbsp;<strong>4.7</strong> &nbsp;on G2</div>
+    <div class="trust-sep2"></div>
+    <div class="trust-strip-badge">🏆 2026 Fastest Growing Product</div>
+    <div class="trust-sep2"></div>
+    <div class="trust-strip-badge" style="cursor:pointer;color:var(--violet3)">See case studies →</div>
+  </div>
+  <div class="company-grid">
+    <div class="company-chip">⬛ INTERCOM <span class="chip-tag chip-testi">Testimonial</span></div>
+    <div class="company-chip">🟠 clay <span class="chip-tag chip-case">Case Study</span></div>
+    <div class="company-chip">⚡ Instantly</div>
+    <div class="company-chip">🟣 ClickUp</div>
+    <div class="company-chip">🌶 CHILI PIPER</div>
+    <div class="company-chip">M MERCOR</div>
+    <div class="company-chip">ahrefs</div>
+    <div class="company-chip">🔷 Amplitude</div>
+    <div class="company-chip">🟢 Framer</div>
+    <div class="company-chip">📊 GTM Strategist <span class="chip-tag chip-testi">Testimonial</span></div>
+    <div class="company-chip">🚀 B2B Boosted <span class="chip-tag chip-case">Case Study</span></div>
+    <div class="company-chip">🔵 coresignal</div>
+  </div>
+</div>
+
+<!-- ── METRICS ── -->
+<section class="section" style="padding-top:70px;padding-bottom:70px">
+  <div class="metrics-grid reveal">
+    <div class="metric-item">
+      <div class="metric-num" data-target="12000">0</div>
+      <div class="metric-label">Leads generated daily</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num" data-target="94" data-suffix="%">0</div>
+      <div class="metric-label">Message delivery rate</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num" data-target="6000" data-suffix="+">0</div>
+      <div class="metric-label">Companies onboarded</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num" data-target="3" data-suffix="x">0</div>
+      <div class="metric-label">Average pipeline increase</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE 1: LinkedIn Sender Rotation ── -->
+<section class="section" id="product" style="padding-top:20px">
+  <div class="eyebrow">Services</div>
+  <h2 class="sh" style="max-width:560px">Three engines.<br>One unified platform.</h2>
+
+  <div style="margin-top:60px">
+    <div class="feature-block reveal">
+      <div class="feature-block-glow"></div>
+      <div class="fb-text">
+        <div class="eyebrow" style="margin-bottom:12px">LinkedIn Automation</div>
+        <h3 style="font-size:clamp(24px,2.5vw,38px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px">Auto-rotate <span style="color:var(--red);background:var(--red-dim);padding:2px 10px;border-radius:6px">LinkedIn senders</span></h3>
+        <p style="font-size:15px;color:var(--g1);line-height:1.8;margin-bottom:28px">Connect unlimited LinkedIn accounts for one flat fee and automatically rotate sending between them. Reach more leads and book more meetings — without losing the personal touch.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Smart rate-limiting per account</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Unified inbox across all senders</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Auto-pause on limit warnings</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Dedicated residential proxies</div>
+        </div>
+        <a href="#" class="btn-hero-ghost" style="margin-top:28px;display:inline-flex">Learn more →</a>
+      </div>
+      <div class="fb-visual">
+        <div class="orbit-wrap">
+          <div class="orbit-ring orbit-ring1"></div>
+          <div class="orbit-ring orbit-ring2"></div>
+          <div class="orbit-center">🔗</div>
+          <div class="orbit-av" style="top:10%;left:50%;background:linear-gradient(135deg,#7C3AED,#A78BFA)">AF</div>
+          <div class="orbit-av" style="top:50%;left:95%;background:linear-gradient(135deg,#0E7490,#38BDF8)">SH</div>
+          <div class="orbit-av" style="top:88%;left:70%;background:linear-gradient(135deg,#065F46,#22C55E)">LJ</div>
+          <div class="orbit-av" style="top:88%;left:28%;background:linear-gradient(135deg,#9D174D,#F472B6)">KR</div>
+          <div class="orbit-av" style="top:50%;left:5%;background:linear-gradient(135deg,#92400E,#FCD34D);color:#000">MF</div>
+          <div class="orbit-dot" style="top:30%;left:75%"></div>
+          <div class="orbit-dot" style="top:70%;left:20%"></div>
+        </div>
+        <div class="sender-list-mock" style="margin-top:16px">
+          <div class="slm-header">
+            <span style="font-size:12px;font-weight:600">LinkedIn senders · 24 active</span>
+            <span class="slm-add">+ Add senders</span>
+          </div>
+          <div class="ms-row"><div class="ms-check">✓</div><div class="ms-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">AF</div><div class="ms-info"><div class="ms-name">Ammar Foley</div><div class="ms-email">ammar@nexflow.io</div></div><div class="ms-status">Available</div></div>
+          <div class="ms-row" style="border-bottom:none"><div class="ms-check">✓</div><div class="ms-av" style="background:linear-gradient(135deg,#0E7490,#38BDF8)">SH</div><div class="ms-info"><div class="ms-name">Sienna Hewitt</div><div class="ms-email">sienna@nexflow.io</div></div><div class="ms-status">Available</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 2: Voice AI -->
+    <div class="feature-block reveal">
+      <div class="fb-text">
+        <div class="eyebrow" style="margin-bottom:12px">Voice AI Automation</div>
+        <h3 style="font-size:clamp(24px,2.5vw,38px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px">AI agents that <span style="color:var(--cyan);background:rgba(56,189,248,0.1);padding:2px 10px;border-radius:6px">call your leads</span></h3>
+        <p style="font-size:15px;color:var(--g1);line-height:1.8;margin-bottom:28px">Deploy conversational AI voice agents that call, qualify, and follow up with prospects automatically. Real-time transcription, sentiment analysis, and CRM sync — all hands-free.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Natural conversation flows with GPT-4o</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Real-time call transcription</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Lead scoring & sentiment detection</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Auto-sync to HubSpot / Salesforce</div>
+        </div>
+        <a href="#" class="btn-hero-ghost" style="margin-top:28px;display:inline-flex">Learn more →</a>
+      </div>
+      <div class="fb-visual">
+        <div class="voice-mock">
+          <div class="vm-header">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#38BDF8,#0E7490);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">MK</div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:600">Marco Klein · Prospect</div>
+              <div class="vm-call-status"><span class="vm-pulse"></span> Live call · 2:34</div>
+            </div>
+            <div style="padding:6px 12px;border-radius:8px;background:var(--red-dim);color:var(--red);font-size:12px;font-weight:600;cursor:pointer">End call</div>
+          </div>
+          <div class="vm-transcript">
+            <div class="vm-line">
+              <div class="vm-speaker vm-ai">AI</div>
+              <div class="vm-bubble ai">Hi Marco, this is Alex from NexFlow. I noticed you've been exploring LinkedIn automation tools — do you have 2 minutes?</div>
+            </div>
+            <div class="vm-line">
+              <div class="vm-speaker vm-human">Marco</div>
+              <div class="vm-bubble human">Sure, I'm actually looking for something that handles multiple accounts. We have a team of 8 SDRs.</div>
+            </div>
+            <div class="vm-line">
+              <div class="vm-speaker vm-ai">AI</div>
+              <div class="vm-bubble ai">That's exactly what NexFlow is built for. With 8 SDRs you'd be on our Growth plan — unlimited accounts, one flat fee. Want me to book a demo with the team?</div>
+            </div>
+          </div>
+          <div class="vm-footer">
+            <div style="font-size:11px;color:var(--g2);white-space:nowrap">AI speaking</div>
+            <div class="vm-waveform">
+              <div class="vm-bar" style="height:12px"></div>
+              <div class="vm-bar" style="height:18px"></div>
+              <div class="vm-bar" style="height:8px"></div>
+              <div class="vm-bar" style="height:22px"></div>
+              <div class="vm-bar" style="height:14px"></div>
+              <div class="vm-bar" style="height:20px"></div>
+              <div class="vm-bar" style="height:10px"></div>
+              <div class="vm-bar" style="height:16px"></div>
+              <div class="vm-bar" style="height:24px"></div>
+              <div class="vm-bar" style="height:12px"></div>
+              <div class="vm-bar" style="height:18px"></div>
+              <div class="vm-bar" style="height:8px"></div>
+            </div>
+            <div style="padding:6px 12px;border-radius:8px;background:var(--green-dim);color:var(--green);font-size:12px;font-weight:600">🔥 High intent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE 3: Custom Workflows -->
+    <div class="feature-block reveal">
+      <div class="feature-block-glow"></div>
+      <div class="fb-text">
+        <div class="eyebrow" style="margin-bottom:12px">Custom Workflows</div>
+        <h3 style="font-size:clamp(24px,2.5vw,38px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px">Build <span style="color:var(--violet3);background:var(--violet-dim);padding:2px 10px;border-radius:6px">any sequence</span><br>without code</h3>
+        <p style="font-size:15px;color:var(--g1);line-height:1.8;margin-bottom:28px">Create multi-step, multi-channel automation pipelines using our visual workflow builder. Combine LinkedIn, Voice AI, email, and webhooks into one seamless sequence.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Drag-and-drop node builder</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Conditional branching & A/B testing</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> 30+ integrations (Clay, Zapier, n8n)</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--g1)"><span style="color:var(--green)">✓</span> Custom API & webhook triggers</div>
+        </div>
+        <a href="#" class="btn-hero-ghost" style="margin-top:28px;display:inline-flex">Explore builder →</a>
+      </div>
+      <div class="fb-visual">
+        <div class="wf-mock">
+          <div style="font-size:11px;color:var(--g2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px">Campaign start</div>
+          <div class="wf-node">
+            <div class="wf-node-icon" style="background:var(--violet-dim)">🔗</div>
+            <div><div class="wf-node-label">LinkedIn Connection Request</div><div class="wf-node-sub">Personalised by {{industry}}</div></div>
+            <div style="margin-left:auto;font-size:11px;color:var(--green)">Active</div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="wf-node-icon" style="background:rgba(251,146,60,0.1)">⏱</div>
+            <div><div class="wf-node-label">Wait for acceptance</div><div class="wf-node-sub">Max 7 days</div></div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="wf-node-icon" style="background:rgba(56,189,248,0.1)">💬</div>
+            <div><div class="wf-node-label">Send follow-up message</div><div class="wf-node-sub">AI-personalised copy</div></div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-node">
+            <div class="wf-node-icon" style="background:var(--green-dim)">🎙️</div>
+            <div><div class="wf-node-label">Voice AI call</div><div class="wf-node-sub">High-intent leads only</div></div>
+            <div style="margin-left:auto;font-size:11px;color:var(--violet3)">→ If replied</div>
+          </div>
+          <div class="wf-arrow">↓</div>
+          <div class="wf-add">+ Add step</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section section-center" id="pricing">
+  <div class="eyebrow center">Pricing</div>
+  <h2 class="sh">Flat-rate. No surprises.</h2>
+  <p class="sh-sub center" style="margin-bottom:56px">All plans include LinkedIn automation, Voice AI, and custom workflows. Scale freely.</p>
+  <div class="pricing-grid reveal">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-desc">For solo founders & freelancers</div>
+      <div class="price-amount"><sup>$</sup>79<sub>/mo</sub></div>
+      <div class="price-billing">Billed monthly · or $59/mo annual</div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><span class="pf-check">✓</span> 3 LinkedIn sender accounts</div>
+      <div class="price-feature"><span class="pf-check">✓</span> 500 Voice AI minutes/month</div>
+      <div class="price-feature"><span class="pf-check">✓</span> 5 active workflow sequences</div>
+      <div class="price-feature"><span class="pf-check">✓</span> 1,000 email enrichment credits</div>
+      <div class="price-feature"><span class="pf-check">✓</span> HubSpot & Zapier integrations</div>
+      <div class="price-feature"><span class="pf-check">✓</span> 14-day free trial</div>
+      <a href="#" class="btn-price btn-price-outline">Start free trial</a>
+    </div>
+    <div class="price-card featured">
+      <div class="feat-badge">MOST POPULAR</div>
+      <div class="price-name">Growth</div>
+      <div class="price-desc">For sales teams & agencies</div>
+      <div class="price-amount"><sup>$</sup>299<sub>/mo</sub></div>
+      <div class="price-billing">Billed monthly · or $239/mo annual</div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><span class="pf-check">✓</span> 15 LinkedIn sender accounts</div>
+      <div class="price-feature"><span class="pf-check">✓</span> 3,000 Voice AI minutes/month</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Unlimited workflow sequences</div>
+      <div class="price-feature"><span class="pf-check">✓</span> 10,000 email enrichment credits</div>
+      <div class="price-feature"><span class="pf-check">✓</span> All integrations + full API access</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Dedicated residential proxies</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Priority support</div>
+      <a href="#" class="btn-price btn-price-fill">Start free trial</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Agency</div>
+      <div class="price-desc">For high-volume lead gen agencies</div>
+      <div class="price-amount"><sup>$</sup>799<sub>/mo</sub></div>
+      <div class="price-billing">Billed monthly · custom annual pricing</div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><span class="pf-check">✓</span> Unlimited LinkedIn accounts</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Unlimited Voice AI minutes</div>
+      <div class="price-feature"><span class="pf-check">✓</span> White-label dashboard & branding</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Unlimited email enrichment credits</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Dedicated onboarding + Slack</div>
+      <div class="price-feature"><span class="pf-check">✓</span> Custom API & MCP server access</div>
+      <a href="#" class="btn-price btn-price-outline">Contact sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section section-center">
+  <div class="eyebrow center">Customer stories</div>
+  <h2 class="sh" style="margin-bottom:48px">Loved by 6,000+ teams.</h2>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We went from manually sending 50 connection requests a week to over 800 — across 10 accounts. Our pipeline tripled in 6 weeks. The Voice AI follow-up is genuinely scary good."</p>
+      <div class="testi-author">
+        <div class="testi-av" style="background:linear-gradient(135deg,#7C3AED,#A78BFA)">AR</div>
+        <div><div class="testi-name">Arjun Rao</div><div class="testi-role">Head of Growth · TechScale India</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I run a lead gen agency with 12 clients. The white-label feature and multi-account setup replaced three separate tools. We save $2,400/month in tooling costs alone."</p>
+      <div class="testi-author">
+        <div class="testi-av" style="background:linear-gradient(135deg,#0E7490,#38BDF8)">SM</div>
+        <div><div class="testi-name">Sara Mitchell</div><div class="testi-role">Founder · Prospect Lab Agency</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The workflow builder sold us. We built a 5-step sequence — LinkedIn, email, Voice AI call — in one platform. No more juggling Zapier and 4 different SaaS tools."</p>
+      <div class="testi-author">
+        <div class="testi-av" style="background:linear-gradient(135deg,#065F46,#22C55E)">DK</div>
+        <div><div class="testi-name">Dev Kumar</div><div class="testi-role">VP Sales · Finova B2B</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-wrap reveal">
+  <h2>Ready to 10x your<br><span style="background:linear-gradient(135deg,var(--violet3),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent">outreach pipeline?</span></h2>
+  <p>Start free. No credit card required. First 14 days on us.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-hero-main">Start for free →</a>
+    <a href="#" class="btn-hero-ghost">Book a demo</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;margin-bottom:12px">
+        <div style="width:30px;height:30px;background:linear-gradient(135deg,var(--violet),#A78BFA);border-radius:7px;display:flex;align-items:center;justify-content:center">⚡</div>
+        NexFlow
+      </div>
+      <p class="footer-brand">The all-in-one outreach automation platform for agencies and B2B sales teams. LinkedIn · Voice AI · Custom Workflows.</p>
+      <div class="footer-socials" style="margin-top:16px">
+        <div class="soc-btn">𝕏</div>
+        <div class="soc-btn">in</div>
+        <div class="soc-btn">▶</div>
+        <div class="soc-btn">💬</div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Product</div>
+      <ul class="footer-links">
+        <li><a href="#">LinkedIn Reach</a></li>
+        <li><a href="#">Voice AI</a></li>
+        <li><a href="#">Custom Workflows</a></li>
+        <li><a href="#">Integrations</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Resources</div>
+      <ul class="footer-links">
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Academy</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#">API Reference</a></li>
+        <li><a href="#">Webinars</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">GDPR</a></li>
+        <li><a href="#">Security</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 NexFlow Technologies. All rights reserved.</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--g3)"><span class="badge-live"></span> All systems operational</div>
+      <div style="font-size:12px;color:var(--g3)">🇮🇳 Made in India</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Counter animation
+const counters = document.querySelectorAll('.metric-num[data-target]');
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '+';
+    let start = null;
+    const step = ts => {
+      if(!start) start = ts;
+      const p = Math.min((ts-start)/1800,1);
+      const ease = 1-Math.pow(1-p,3);
+      el.textContent = (target<10?target:(Math.floor(ease*target))).toLocaleString()+suffix;
+      if(p<1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    counterObs.unobserve(el);
+  });
+},{threshold:0.5});
+counters.forEach(c => counterObs.observe(c));
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+},{threshold:0.1});
+reveals.forEach(r => revealObs.observe(r));
+
+// Stagger children of grids
+document.querySelectorAll('.pricing-grid .price-card, .testi-grid .testi-card, .services-grid .service-card').forEach((el,i)=>{
+  el.style.transitionDelay = (i*0.08)+'s';
+});
+</script>
+</body>
+</html>
