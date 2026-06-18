@@ -1,0 +1,3100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Con Way Freight Carrier — Pan-India Logistics</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --bg: #07090F;
+      --bg2: #0C1219;
+      --bg3: #101825;
+      --bg4: #162030;
+      --or: #FF5200;
+      --or2: #FF6B35;
+      --ord: #CC3D00;
+      --og: rgba(255, 82, 0, 0.18);
+      --tx: #EEF2F7;
+      --mu: #637585;
+      --mu2: #92A5B8;
+      --bd: rgba(255, 255, 255, 0.06);
+      --bd2: rgba(255, 255, 255, 0.1);
+      --wg: #25D366;
+      --wd: #1DA851;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+      color: var(--tx);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg2)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--or);
+      border-radius: 10px
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      transition: all .4s
+    }
+
+    nav.scrolled {
+      background: rgba(7, 9, 15, .96);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bd2);
+      box-shadow: 0 4px 40px rgba(0, 0, 0, .5)
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none
+    }
+
+    .nav-logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--or);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      clip-path: polygon(12% 0%, 100% 0%, 88% 100%, 0% 100%)
+    }
+
+    .nav-logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase
+    }
+
+    .nav-logo-text span {
+      color: var(--or)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--mu2);
+      text-decoration: none;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color .2s;
+      position: relative;
+      padding-bottom: 4px
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--or);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1)
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--or);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      text-decoration: none;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: all .2s
+    }
+
+    .nav-cta:hover {
+      background: var(--ord);
+      transform: translateY(-1px)
+    }
+
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px
+    }
+
+    .mnav {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(7, 9, 15, .98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bd2);
+      z-index: 999;
+      flex-direction: column;
+      padding: 1rem 2rem 1.5rem;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: all .25s
+    }
+
+    .mnav.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all
+    }
+
+    .mnav a {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mu2);
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--bd);
+      transition: color .2s
+    }
+
+    .mnav a:hover {
+      color: var(--or)
+    }
+
+    .mnav-cta {
+      margin-top: 1rem;
+      background: var(--or);
+      color: #fff !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px !important;
+      border: none !important;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 68px 0 0
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 90% 70% at 65% 45%, rgba(255, 82, 0, .07) 0%, transparent 65%), radial-gradient(ellipse 60% 100% at 10% 20%, rgba(255, 82, 0, .04) 0%, transparent 60%), var(--bg)
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, .022) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 75%)
+    }
+
+    .streaks {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden
+    }
+
+    .s {
+      position: absolute;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 82, 0, .7), transparent);
+      opacity: 0;
+      animation: sdown linear infinite
+    }
+
+    .s:nth-child(1) {
+      left: 8%;
+      height: 100px;
+      animation-duration: 4s;
+      animation-delay: .3s
+    }
+
+    .s:nth-child(2) {
+      left: 22%;
+      height: 70px;
+      animation-duration: 6s;
+      animation-delay: 1.5s
+    }
+
+    .s:nth-child(3) {
+      left: 48%;
+      height: 130px;
+      animation-duration: 5s;
+      animation-delay: .8s
+    }
+
+    .s:nth-child(4) {
+      left: 67%;
+      height: 90px;
+      animation-duration: 4.5s;
+      animation-delay: 2s
+    }
+
+    .s:nth-child(5) {
+      left: 83%;
+      height: 120px;
+      animation-duration: 5.5s;
+      animation-delay: .5s
+    }
+
+    .s:nth-child(6) {
+      left: 93%;
+      height: 80px;
+      animation-duration: 7s;
+      animation-delay: 3s
+    }
+
+    @keyframes sdown {
+      0% {
+        top: -130px;
+        opacity: 0
+      }
+
+      10% {
+        opacity: .7
+      }
+
+      90% {
+        opacity: .7
+      }
+
+      100% {
+        top: 110vh;
+        opacity: 0
+      }
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none
+    }
+
+    .orb1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 82, 0, .07);
+      right: -80px;
+      top: 20%
+    }
+
+    .orb2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 82, 0, .05);
+      left: 5%;
+      bottom: 15%
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+      align-items: center
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 82, 0, .1);
+      border: 1px solid rgba(255, 82, 0, .25);
+      color: var(--or);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      margin-bottom: 1.5rem;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      animation: fup .7s ease both
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--or);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+      flex-shrink: 0
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.6)
+      }
+    }
+
+    h1.htitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(58px, 7.5vw, 96px);
+      font-weight: 900;
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      margin-bottom: 1.5rem;
+      animation: fup .8s ease .1s both
+    }
+
+    h1.htitle em {
+      color: var(--or);
+      font-style: normal;
+      display: block
+    }
+
+    h1.htitle small {
+      display: block;
+      font-size: .38em;
+      color: var(--mu2);
+      font-weight: 300;
+      letter-spacing: 6px;
+      margin-top: 10px;
+      line-height: 1
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--mu2);
+      line-height: 1.85;
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+      animation: fup .8s ease .2s both
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      animation: fup .8s ease .3s both
+    }
+
+    .btn-p {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--or);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 15px 34px;
+      text-decoration: none;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: all .25s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .btn-p::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      animation: shim 3s ease infinite
+    }
+
+    @keyframes shim {
+      0% {
+        left: -100%
+      }
+
+      100% {
+        left: 200%
+      }
+    }
+
+    .btn-p:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(255, 82, 0, .45)
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wg);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      text-decoration: none;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: all .25s
+    }
+
+    .btn-wa:hover {
+      background: var(--wd);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(37, 211, 102, .35)
+    }
+
+    .hmstats {
+      display: flex;
+      align-items: center;
+      animation: fup .8s ease .4s both
+    }
+
+    .hmstat {
+      padding: 0 2rem 0 0
+    }
+
+    .hmstat:first-child {
+      padding-left: 0
+    }
+
+    .hmstat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1
+    }
+
+    .hmstat-num sup {
+      font-size: .55em;
+      color: var(--or);
+      vertical-align: super
+    }
+
+    .hmstat-lbl {
+      font-size: 10px;
+      color: var(--mu);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 3px
+    }
+
+    .hmdiv {
+      width: 1px;
+      height: 44px;
+      background: var(--bd2);
+      margin-right: 2rem
+    }
+
+    .hcard {
+      background: var(--bg3);
+      border: 1px solid var(--bd2);
+      padding: 0;
+      overflow: hidden;
+      animation: fleft .9s ease .3s both
+    }
+
+    @keyframes fleft {
+      from {
+        opacity: 0;
+        transform: translateX(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    .hcard-top {
+      padding: 1.75rem;
+      border-bottom: 1px solid var(--bd)
+    }
+
+    .hcard-top::before {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, var(--or), var(--or2), #FFB800);
+      margin-bottom: 1.5rem
+    }
+
+    .route-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 12px
+    }
+
+    .route-path {
+      display: flex;
+      align-items: center;
+      position: relative
+    }
+
+    .rnode {
+      background: var(--bg4);
+      border: 2px solid var(--or);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1
+    }
+
+    .rline {
+      flex: 1;
+      height: 2px;
+      background: rgba(255, 82, 0, .15);
+      position: relative;
+      overflow: hidden
+    }
+
+    .rline::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, var(--or), transparent);
+      animation: rsweep 2.2s ease-in-out infinite
+    }
+
+    @keyframes rsweep {
+      0% {
+        left: -100%
+      }
+
+      100% {
+        left: 100%
+      }
+    }
+
+    .rtruck {
+      position: absolute;
+      font-size: 22px;
+      top: 50%;
+      transform: translateY(-60%);
+      animation: tmove 4s linear infinite;
+      z-index: 2
+    }
+
+    @keyframes tmove {
+      0% {
+        left: 4%
+      }
+
+      100% {
+        left: 82%
+      }
+    }
+
+    .hcard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--bd)
+    }
+
+    .hcell {
+      background: var(--bg3);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: background .2s
+    }
+
+    .hcell:hover {
+      background: var(--bg4)
+    }
+
+    .hcell-icon {
+      color: var(--or);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px
+    }
+
+    .hcell-lbl {
+      font-size: 10px;
+      color: var(--mu);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 3px
+    }
+
+    .hcell-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff
+    }
+
+    @keyframes fup {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .ticker {
+      background: var(--or);
+      padding: 11px 0;
+      overflow: hidden;
+      position: relative
+    }
+
+    .ticker::before,
+    .ticker::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 1
+    }
+
+    .ticker::before {
+      left: 0;
+      background: linear-gradient(to right, var(--or), transparent)
+    }
+
+    .ticker::after {
+      right: 0;
+      background: linear-gradient(to left, var(--or), transparent)
+    }
+
+    .ttrack {
+      display: flex;
+      animation: tick 22s linear infinite;
+      white-space: nowrap
+    }
+
+    .ti {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .9);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .tsep {
+      color: rgba(255, 255, 255, .3);
+      font-size: 7px
+    }
+
+    @keyframes tick {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .stats {
+      background: var(--bg2);
+      border-top: 1px solid var(--bd);
+      border-bottom: 1px solid var(--bd);
+      padding: 0
+    }
+
+    .sgrid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr)
+    }
+
+    .sitem {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--bd);
+      position: relative;
+      overflow: hidden
+    }
+
+    .sitem:last-child {
+      border-right: none
+    }
+
+    .sitem::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(255, 82, 0, .05), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .sitem:hover::before {
+      opacity: 1
+    }
+
+    .sicon {
+      font-size: 22px;
+      color: var(--or);
+      margin-bottom: 1rem;
+      display: block
+    }
+
+    .snum {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center
+    }
+
+    .snum-sfx {
+      font-size: 34px;
+      color: var(--or);
+      margin-top: 6px;
+      margin-left: 2px
+    }
+
+    .slbl {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-top: 8px
+    }
+
+    section {
+      padding: 7rem 3rem
+    }
+
+    .si {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: .9rem
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--or)
+    }
+
+    .sec-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(40px, 5.5vw, 66px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: .95;
+      letter-spacing: -1px;
+      margin-bottom: .9rem
+    }
+
+    .sec-sub {
+      color: var(--mu2);
+      font-size: 15px;
+      line-height: 1.85;
+      max-width: 520px
+    }
+
+    .sh {
+      margin-bottom: 4rem
+    }
+
+    .routes-sec {
+      background: var(--bg2)
+    }
+
+    .rgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--bd)
+    }
+
+    .rc {
+      background: var(--bg2);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+      cursor: default
+    }
+
+    .rc::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--or), var(--or2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s cubic-bezier(.22, 1, .36, 1)
+    }
+
+    .rc::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 90% 90% at 50% 110%, rgba(255, 82, 0, .07), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .rc:hover {
+      background: var(--bg3)
+    }
+
+    .rc:hover::before {
+      transform: scaleX(1)
+    }
+
+    .rc:hover::after {
+      opacity: 1
+    }
+
+    .rc-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 82, 0, .1);
+      border: 1px solid rgba(255, 82, 0, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+      font-size: 22px;
+      margin-bottom: 1.5rem
+    }
+
+    .rc-from {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: .5rem
+    }
+
+    .rc-dest {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.5px;
+      margin-bottom: .5rem;
+      line-height: 1
+    }
+
+    .rc-detail {
+      font-size: 13px;
+      color: var(--mu2);
+      line-height: 1.65
+    }
+
+    .rc-arrow {
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 18px;
+      color: var(--bd2);
+      transition: color .3s, transform .3s
+    }
+
+    .rc:hover .rc-arrow {
+      color: var(--or);
+      transform: translate(3px, -3px)
+    }
+
+    .fleet-sec {
+      background: var(--bg)
+    }
+
+    .fleet-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start
+    }
+
+    .fleet-sticky {
+      position: sticky;
+      top: 100px
+    }
+
+    .fleet-big-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(48px, 6vw, 72px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: .95;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem
+    }
+
+    .fleet-desc {
+      font-size: 15px;
+      color: var(--mu2);
+      line-height: 1.85;
+      margin-bottom: 2rem
+    }
+
+    .fleet-callout {
+      background: var(--bg3);
+      border: 1px solid var(--bd2);
+      padding: 1.75rem;
+      border-left: 3px solid var(--or);
+      margin-top: 2rem
+    }
+
+    .fleet-callout-t {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: .4rem
+    }
+
+    .fleet-callout-s {
+      font-size: 13px;
+      color: var(--mu2);
+      line-height: 1.7
+    }
+
+    .fcards {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--bd)
+    }
+
+    .fc {
+      background: var(--bg2);
+      padding: 2rem 2.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      border-left: 3px solid transparent;
+      transition: all .3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden
+    }
+
+    .fc::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 100% 100% at 0% 50%, rgba(255, 82, 0, .04), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .fc:hover {
+      background: var(--bg3);
+      border-left-color: var(--or)
+    }
+
+    .fc:hover::after {
+      opacity: 1
+    }
+
+    .fc-emoji {
+      font-size: 38px;
+      line-height: 1;
+      flex-shrink: 0
+    }
+
+    .fc-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.5px;
+      margin-bottom: .4rem
+    }
+
+    .fc-desc {
+      font-size: 13px;
+      color: var(--mu2);
+      line-height: 1.7
+    }
+
+    .fc-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 1rem
+    }
+
+    .ftag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--or);
+      background: rgba(255, 82, 0, .08);
+      border: 1px solid rgba(255, 82, 0, .2);
+      padding: 4px 12px
+    }
+
+    .why-sec {
+      background: var(--bg2)
+    }
+
+    .why-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start
+    }
+
+    .wlist {
+      display: flex;
+      flex-direction: column
+    }
+
+    .wi {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--bd);
+      cursor: default;
+      transition: all .25s;
+      position: relative
+    }
+
+    .wi:first-child {
+      padding-top: 0
+    }
+
+    .wi:last-child {
+      border-bottom: none;
+      padding-bottom: 0
+    }
+
+    .wi::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      background: rgba(255, 82, 0, .025);
+      transition: width .3s
+    }
+
+    .wi:hover::after {
+      width: 100%
+    }
+
+    .wi-n {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      color: rgba(255, 82, 0, .12);
+      line-height: 1;
+      min-width: 60px;
+      flex-shrink: 0;
+      transition: color .3s
+    }
+
+    .wi:hover .wi-n {
+      color: rgba(255, 82, 0, .35)
+    }
+
+    .wi-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+      letter-spacing: .5px
+    }
+
+    .wi-text {
+      font-size: 14px;
+      color: var(--mu2);
+      line-height: 1.75
+    }
+
+    .why-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      position: relative;
+      padding-top: 1rem
+    }
+
+    .wcard {
+      background: var(--bg3);
+      border: 1px solid var(--bd2);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: border-color .3s, transform .35s;
+      cursor: default
+    }
+
+    .wcard:hover {
+      border-color: rgba(255, 82, 0, .35);
+      transform: translateY(-5px)
+    }
+
+    .wcard-icon {
+      font-size: 32px;
+      margin-bottom: .9rem;
+      display: block
+    }
+
+    .wcard-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--or);
+      line-height: 1
+    }
+
+    .wcard-lbl {
+      font-size: 10px;
+      color: var(--mu);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 4px
+    }
+
+    .wcard.accent {
+      background: linear-gradient(135deg, var(--bg3), rgba(255, 82, 0, .06));
+      border-color: rgba(255, 82, 0, .2)
+    }
+
+    .trust {
+      background: var(--bg);
+      border-top: 1px solid var(--bd);
+      border-bottom: 1px solid var(--bd);
+      padding: 1.5rem 3rem
+    }
+
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap
+    }
+
+    .trust-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mu);
+      white-space: nowrap
+    }
+
+    .trust-items {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap
+    }
+
+    .trust-i {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mu2)
+    }
+
+    .trust-i i {
+      color: var(--or);
+      font-size: 14px
+    }
+
+    .map-sec {
+      background: var(--bg2);
+      padding: 0
+    }
+
+    .map-head {
+      padding: 5rem 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .map-wrap {
+      position: relative
+    }
+
+    .map-frame {
+      display: block;
+      width: 100%;
+      height: 440px;
+      border: none;
+      filter: grayscale(35%) contrast(1.1) brightness(.82)
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      border: 1px solid var(--or);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      z-index: 10;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)
+    }
+
+    .map-pin i {
+      color: var(--or)
+    }
+
+    .map-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--bd);
+      padding: 1.25rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .map-addr {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--mu2)
+    }
+
+    .map-addr i {
+      color: var(--or)
+    }
+
+    .btn-dir {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--or);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      text-decoration: none;
+      clip-path: polygon(7px 0%, 100% 0%, calc(100% - 7px) 100%, 0% 100%);
+      transition: background .2s
+    }
+
+    .btn-dir:hover {
+      background: var(--ord)
+    }
+
+    .contact-sec {
+      background: var(--bg)
+    }
+
+    .csplit {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start
+    }
+
+    .cinfo-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2.5rem
+    }
+
+    .crow {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem
+    }
+
+    .crow-icon {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      background: rgba(255, 82, 0, .1);
+      border: 1px solid rgba(255, 82, 0, .2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+      font-size: 17px
+    }
+
+    .crow-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 4px
+    }
+
+    .crow-val {
+      font-size: 15px;
+      color: var(--tx);
+      line-height: 1.6
+    }
+
+    .wa-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px
+    }
+
+    .wa-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(37, 211, 102, .09);
+      border: 1px solid rgba(37, 211, 102, .2);
+      color: var(--wg);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 16px;
+      transition: all .2s
+    }
+
+    .wa-link:hover {
+      background: rgba(37, 211, 102, .16);
+      border-color: rgba(37, 211, 102, .4)
+    }
+
+    .cform {
+      background: var(--bg3);
+      border: 1px solid var(--bd2);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .cform::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--or), var(--or2), #FFB800)
+    }
+
+    .ftitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      letter-spacing: .5px
+    }
+
+    .frow {
+      margin-bottom: 1.1rem
+    }
+
+    .frow label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 7px
+    }
+
+    .frow input,
+    .frow select,
+    .frow textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--bd2);
+      color: var(--tx);
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      padding: 12px 15px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none
+    }
+
+    .frow input:focus,
+    .frow select:focus,
+    .frow textarea:focus {
+      border-color: var(--or);
+      box-shadow: 0 0 0 3px rgba(255, 82, 0, .1)
+    }
+
+    .frow select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath fill='%23FF5200' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      cursor: pointer;
+      padding-right: 40px
+    }
+
+    .frow select option {
+      background: var(--bg2)
+    }
+
+    .frow textarea {
+      min-height: 85px;
+      resize: vertical
+    }
+
+    .f2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem
+    }
+
+    .factions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: .75rem
+    }
+
+    .fbtn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px;
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+      transition: all .2s
+    }
+
+    .fbtn-or {
+      background: var(--or);
+      color: #fff
+    }
+
+    .fbtn-or:hover {
+      background: var(--ord)
+    }
+
+    .fbtn-wa {
+      background: var(--wg);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px
+    }
+
+    .fbtn-wa:hover {
+      background: var(--wd)
+    }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--bd);
+      padding: 3rem
+    }
+
+    .footer-in {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .ftop {
+      display: flex;
+      justify-content: space-between;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--bd)
+    }
+
+    .fbrand {
+      max-width: 280px
+    }
+
+    .flogo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: .75rem
+    }
+
+    .flogo span {
+      color: var(--or)
+    }
+
+    .ftagline {
+      font-size: 13px;
+      color: var(--mu);
+      line-height: 1.8
+    }
+
+    .fgroup-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 1.2rem
+    }
+
+    .fgroup a {
+      display: block;
+      font-size: 14px;
+      color: var(--mu2);
+      text-decoration: none;
+      margin-bottom: .65rem;
+      transition: color .2s
+    }
+
+    .fgroup a:hover {
+      color: var(--or)
+    }
+
+    .fbot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .fcopy {
+      font-size: 12px;
+      color: var(--mu)
+    }
+
+    .fwa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--wg);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none
+    }
+
+    .wafloat {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px
+    }
+
+    .wabtn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--wg);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(37, 211, 102, .45);
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .wabtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(37, 211, 102, .6)
+    }
+
+    .walbl {
+      background: var(--bg2);
+      border: 1px solid rgba(37, 211, 102, .25);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all .25s;
+      pointer-events: none
+    }
+
+    .wafloat:hover .walbl {
+      opacity: 1;
+      transform: translateX(0)
+    }
+
+    .chlauncher {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      z-index: 998;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px
+    }
+
+    .chbtn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--or);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      box-shadow: 0 4px 24px rgba(255, 82, 0, .5);
+      transition: transform .2s, box-shadow .2s;
+      position: relative
+    }
+
+    .chbtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(255, 82, 0, .65)
+    }
+
+    .chlbl {
+      background: var(--bg2);
+      border: 1px solid rgba(255, 82, 0, .25);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all .25s;
+      pointer-events: none
+    }
+
+    .chlauncher:hover .chlbl {
+      opacity: 1;
+      transform: translateX(0)
+    }
+
+    .chudot {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      border: 2px solid var(--or);
+      display: none
+    }
+
+    .chudot.show {
+      display: block;
+      animation: ping 1.5s ease-in-out infinite
+    }
+
+    @keyframes ping {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(1.5);
+        opacity: .6
+      }
+    }
+
+    .chwin {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 370px;
+      max-height: 540px;
+      background: var(--bg2);
+      border: 1px solid var(--bd2);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .6);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      transform: scale(.9) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transform-origin: bottom right;
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), opacity .2s;
+      border-radius: 2px
+    }
+
+    .chwin.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .chhead {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--bd);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      position: relative
+    }
+
+    .chhead::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--or), transparent)
+    }
+
+    .chhead-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 82, 0, .15);
+      border: 1px solid rgba(255, 82, 0, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+      font-size: 16px;
+      flex-shrink: 0
+    }
+
+    .chname {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase
+    }
+
+    .chstatus {
+      font-size: 11px;
+      color: #4ade80;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px
+    }
+
+    .chstatus::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: ping 2s ease-in-out infinite
+    }
+
+    .chclose {
+      background: none;
+      border: none;
+      color: var(--mu);
+      cursor: pointer;
+      font-size: 15px;
+      padding: 4px;
+      margin-left: auto;
+      transition: color .2s
+    }
+
+    .chclose:hover {
+      color: #fff
+    }
+
+    .chmsgs {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scroll-behavior: smooth
+    }
+
+    .chmsgs::-webkit-scrollbar {
+      width: 4px
+    }
+
+    .chmsgs::-webkit-scrollbar-thumb {
+      background: var(--bd2);
+      border-radius: 2px
+    }
+
+    .cbbl {
+      max-width: 85%;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      border-radius: 2px
+    }
+
+    .cbbl.bot {
+      background: var(--bg3);
+      border: 1px solid var(--bd);
+      color: var(--tx);
+      align-self: flex-start;
+      border-radius: 0 8px 8px 8px
+    }
+
+    .cbbl.user {
+      background: var(--or);
+      color: #fff;
+      align-self: flex-end;
+      border-radius: 8px 0 8px 8px
+    }
+
+    .cbbl.typing {
+      background: var(--bg3);
+      border: 1px solid var(--bd);
+      align-self: flex-start;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 8px
+    }
+
+    .tdots {
+      display: flex;
+      gap: 5px;
+      align-items: center
+    }
+
+    .tdots span {
+      width: 6px;
+      height: 6px;
+      background: var(--mu);
+      border-radius: 50%;
+      animation: bounce 1.2s ease-in-out infinite
+    }
+
+    .tdots span:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .tdots span:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes bounce {
+
+      0%,
+      60%,
+      100% {
+        transform: translateY(0)
+      }
+
+      30% {
+        transform: translateY(-6px)
+      }
+    }
+
+    .chqr {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 14px 10px
+    }
+
+    .chqrb {
+      background: transparent;
+      border: 1px solid rgba(255, 82, 0, .3);
+      color: var(--or);
+      font-family: 'Barlow', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all .2s;
+      border-radius: 2px
+    }
+
+    .chqrb:hover {
+      background: rgba(255, 82, 0, .12);
+      border-color: var(--or)
+    }
+
+    .chinput-area {
+      border-top: 1px solid var(--bd);
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0
+    }
+
+    .chinput {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--bd);
+      color: var(--tx);
+      font-family: 'Barlow', sans-serif;
+      font-size: 13.5px;
+      padding: 9px 12px;
+      outline: none;
+      resize: none;
+      transition: border-color .2s;
+      border-radius: 2px
+    }
+
+    .chinput:focus {
+      border-color: var(--or)
+    }
+
+    .chinput::placeholder {
+      color: var(--mu)
+    }
+
+    .chsend {
+      width: 40px;
+      background: var(--or);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+      flex-shrink: 0;
+      border-radius: 2px
+    }
+
+    .chsend:hover {
+      background: var(--ord)
+    }
+
+    .chsend:disabled {
+      background: var(--bg4);
+      cursor: not-allowed
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(7, 9, 15, .96);
+      border: 1px solid rgba(37, 211, 102, .4);
+      color: #4ade80;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 13px 26px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .5);
+      transition: transform .4s cubic-bezier(.34, 1.56, .64, 1), opacity .3s;
+      opacity: 0;
+      white-space: nowrap;
+      border-radius: 2px
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1
+    }
+
+    .toast.err {
+      border-color: rgba(239, 68, 68, .4);
+      color: #f87171
+    }
+
+    .rev {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .65s ease, transform .65s ease
+    }
+
+    .rev.vis {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .revl {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity .65s ease, transform .65s ease
+    }
+
+    .revl.vis {
+      opacity: 1;
+      transform: translateX(0)
+    }
+
+    .revr {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity .65s ease, transform .65s ease
+    }
+
+    .revr.vis {
+      opacity: 1;
+      transform: translateX(0)
+    }
+
+    .d1 {
+      transition-delay: .1s
+    }
+
+    .d2 {
+      transition-delay: .2s
+    }
+
+    .d3 {
+      transition-delay: .3s
+    }
+
+    .d4 {
+      transition-delay: .4s
+    }
+
+    @media(max-width:1024px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      .fleet-layout {
+        grid-template-columns: 1fr
+      }
+
+      .fleet-sticky {
+        position: static
+      }
+
+      .why-layout {
+        grid-template-columns: 1fr
+      }
+
+      .why-right {
+        display: none
+      }
+
+      .csplit {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      .rgrid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .sgrid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .sitem:nth-child(2) {
+        border-right: none
+      }
+
+      .sitem:nth-child(3),
+      .sitem:nth-child(4) {
+        border-top: 1px solid var(--bd)
+      }
+    }
+
+    @media(max-width:768px) {
+      section {
+        padding: 5rem 1.5rem
+      }
+
+      nav {
+        padding: 0 1.5rem
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none
+      }
+
+      .nav-burger {
+        display: flex
+      }
+
+      .mnav {
+        display: flex
+      }
+
+      .hero-inner {
+        padding: 0 1.5rem
+      }
+
+      .hcard {
+        display: none
+      }
+
+      .rgrid {
+        grid-template-columns: 1fr
+      }
+
+      .factions {
+        grid-template-columns: 1fr
+      }
+
+      .f2col {
+        grid-template-columns: 1fr
+      }
+
+      .ftop {
+        flex-direction: column
+      }
+
+      .fbot {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .wafloat {
+        right: 16px;
+        bottom: 22px
+      }
+
+      .chlauncher {
+        right: 16px;
+        bottom: 90px
+      }
+
+      .chwin {
+        width: calc(100vw - 24px);
+        right: 12px;
+        bottom: 86px
+      }
+
+      .map-bar {
+        padding: 1.25rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .trust {
+        padding: 1.5rem
+      }
+
+      .sgrid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">🚛</div>
+      <div class="nav-logo-text">Con<span>Way</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#routes">Routes</a></li>
+      <li><a href="#fleet">Fleet</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/918950140919?text=Hello%20Con%20Way%20Freight%2C%20I%20need%20a%20quote." class="nav-cta"
+      target="_blank">
+      <i class="fa-brands fa-whatsapp"></i>Get a Quote
+    </a>
+    <button class="nav-burger" id="burgerBtn" onclick="toggleMNav()" aria-label="Menu">
+      <i class="fa-solid fa-bars" id="burgerIcon"></i>
+    </button>
+  </nav>
+
+  <div class="mnav" id="mobileNav">
+    <a href="#routes" onclick="closeMNav()">Routes</a>
+    <a href="#fleet" onclick="closeMNav()">Fleet</a>
+    <a href="#why" onclick="closeMNav()">Why Us</a>
+    <a href="#location" onclick="closeMNav()">Location</a>
+    <a href="#contact" onclick="closeMNav()">Contact</a>
+    <a href="https://wa.me/918950140919" class="mnav-cta" target="_blank" onclick="closeMNav()">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+    </a>
+  </div>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="streaks">
+      <div class="s"></div>
+      <div class="s"></div>
+      <div class="s"></div>
+      <div class="s"></div>
+      <div class="s"></div>
+      <div class="s"></div>
+    </div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Panipat, Haryana &nbsp;·&nbsp; Pan-India Coverage
+        </div>
+        <h1 class="htitle">Move<em>Anything.</em><small>Freight Solutions Across India</small></h1>
+        <p class="hero-desc">From Panipat to every corner of India — full container loads, open trucks, and express
+          freight. Trusted by businesses across North, South, East &amp; West.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-p"><i class="fa-solid fa-box"></i>Book a Shipment</a>
+          <a href="https://wa.me/918950140919?text=Hello%20Con%20Way%20Freight%2C%20I%20need%20a%20freight%20quote."
+            class="btn-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i>WhatsApp Now</a>
+        </div>
+        <div class="hmstats">
+          <div class="hmstat">
+            <div class="hmstat-num">6<sup>+</sup></div>
+            <div class="hmstat-lbl">Major Routes</div>
+          </div>
+          <div class="hmdiv"></div>
+          <div class="hmstat">
+            <div class="hmstat-num">20<sup>+</sup></div>
+            <div class="hmstat-lbl">Cities Served</div>
+          </div>
+          <div class="hmdiv"></div>
+          <div class="hmstat">
+            <div class="hmstat-num">24<sup>/7</sup></div>
+            <div class="hmstat-lbl">Support</div>
+          </div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-top">
+          <div class="route-lbl">Live Route — Active Shipment</div>
+          <div class="route-path" style="margin-bottom:1.5rem;position:relative;padding:.8rem 0">
+            <div class="rnode">Panipat</div>
+            <div class="rline">
+              <div class="rtruck">🚛</div>
+            </div>
+            <div class="rnode">Mumbai</div>
+          </div>
+          <div class="route-lbl" style="margin-top:.5rem;margin-bottom:12px">Also delivering to</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span
+              style="background:rgba(255,82,0,.1);border:1px solid rgba(255,82,0,.2);color:var(--or);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 12px">Bangalore</span>
+            <span
+              style="background:rgba(255,82,0,.1);border:1px solid rgba(255,82,0,.2);color:var(--or);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 12px">Chennai</span>
+            <span
+              style="background:rgba(255,82,0,.1);border:1px solid rgba(255,82,0,.2);color:var(--or);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 12px">Hyderabad</span>
+            <span
+              style="background:rgba(255,82,0,.1);border:1px solid rgba(255,82,0,.2);color:var(--or);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:4px 12px">Kolkata</span>
+          </div>
+        </div>
+        <div class="hcard-grid">
+          <div class="hcell"><i class="fa-solid fa-truck hcell-icon"></i>
+            <div>
+              <div class="hcell-lbl">Fleet Type</div>
+              <div class="hcell-val">32ft + 22ft</div>
+            </div>
+          </div>
+          <div class="hcell"><i class="fa-solid fa-shield-halved hcell-icon"></i>
+            <div>
+              <div class="hcell-lbl">Cargo Safety</div>
+              <div class="hcell-val">Secured</div>
+            </div>
+          </div>
+          <div class="hcell"><i class="fa-solid fa-user-tie hcell-icon"></i>
+            <div>
+              <div class="hcell-lbl">Proprietor</div>
+              <div class="hcell-val">Sunny Batra</div>
+            </div>
+          </div>
+          <div class="hcell"><i class="fa-brands fa-whatsapp hcell-icon" style="color:var(--wg)"></i>
+            <div>
+              <div class="hcell-lbl">Direct Line</div>
+              <div class="hcell-val">+91 89501 40919</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ttrack">
+      <span class="ti">Panipat → Mumbai<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Bangalore<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Chennai<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Hyderabad<span class="tsep">◆</span></span>
+      <span class="ti">All North India<span class="tsep">◆</span></span>
+      <span class="ti">All South India<span class="tsep">◆</span></span>
+      <span class="ti">All East India<span class="tsep">◆</span></span>
+      <span class="ti">32ft Containers<span class="tsep">◆</span></span>
+      <span class="ti">22ft Open Trucks<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Mumbai<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Bangalore<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Chennai<span class="tsep">◆</span></span>
+      <span class="ti">Panipat → Hyderabad<span class="tsep">◆</span></span>
+      <span class="ti">All North India<span class="tsep">◆</span></span>
+      <span class="ti">All South India<span class="tsep">◆</span></span>
+      <span class="ti">All East India<span class="tsep">◆</span></span>
+      <span class="ti">32ft Containers<span class="tsep">◆</span></span>
+      <span class="ti">22ft Open Trucks<span class="tsep">◆</span></span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="sgrid">
+      <div class="sitem rev d1"><span class="sicon"><i class="fa-solid fa-route"></i></span>
+        <div class="snum"><span class="sn" data-target="6">0</span><span class="snum-sfx">+</span></div>
+        <div class="slbl">Major Routes</div>
+      </div>
+      <div class="sitem rev d2"><span class="sicon"><i class="fa-solid fa-city"></i></span>
+        <div class="snum"><span class="sn" data-target="20">0</span><span class="snum-sfx">+</span></div>
+        <div class="slbl">Cities Covered</div>
+      </div>
+      <div class="sitem rev d3"><span class="sicon"><i class="fa-solid fa-truck"></i></span>
+        <div class="snum"><span class="sn" data-target="100">0</span><span class="snum-sfx">+</span></div>
+        <div class="slbl">Happy Clients</div>
+      </div>
+      <div class="sitem rev d4"><span class="sicon"><i class="fa-solid fa-headset"></i></span>
+        <div class="snum"><span class="sn" data-target="24">0</span><span class="snum-sfx">/7</span></div>
+        <div class="slbl">Support Available</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="routes-sec" id="routes">
+    <div class="si">
+      <div class="sh">
+        <div class="eyebrow rev">Our Routes</div>
+        <h2 class="sec-title rev d1">We Cover <em style="color:var(--or)">Every Corner</em><br>of India</h2>
+        <p class="sec-sub rev d2">From our Panipat hub, we connect your cargo to major destinations across all four
+          directions with reliable schedules and competitive rates.</p>
+      </div>
+      <div class="rgrid">
+        <div class="rc rev d1"><i class="fa-solid fa-arrow-trend-up rc-arrow"></i>
+          <div class="rc-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <div class="rc-from">From Panipat</div>
+          <div class="rc-dest">Mumbai</div>
+          <div class="rc-detail">West India — Maharashtra<br>Commercial &amp; Industrial Cargo</div>
+        </div>
+        <div class="rc rev d2"><i class="fa-solid fa-arrow-trend-up rc-arrow"></i>
+          <div class="rc-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="rc-from">From Panipat</div>
+          <div class="rc-dest">Bangalore</div>
+          <div class="rc-detail">South India — Karnataka<br>Tech &amp; Manufacturing Hub</div>
+        </div>
+        <div class="rc rev d3"><i class="fa-solid fa-arrow-trend-up rc-arrow"></i>
+          <div class="rc-icon"><i class="fa-solid fa-anchor"></i></div>
+          <div class="rc-from">From Panipat</div>
+          <div class="rc-dest">Chennai</div>
+          <div class="rc-detail">South India — Tamil Nadu<br>Port &amp; Export Logistics</div>
+        </div>
+        <div class="rc rev d1"><i class="fa-solid fa-arrow-trend-up rc-arrow"></i>
+          <div class="rc-icon"><i class="fa-solid fa-industry"></i></div>
+          <div class="rc-from">From Panipat</div>
+          <div class="rc-dest">Hyderabad</div>
+          <div class="rc-detail">South India — Telangana<br>All-India Gateway City</div>
+        </div>
+        <div class="rc rev d2"><i class="fa-solid fa-arrow-trend-up rc-arrow"></i>
+          <div class="rc-icon"><i class="fa-solid fa-water"></i></div>
+          <div class="rc-from">Special Zone</div>
+          <div class="rc-dest">All East India</div>
+          <div class="rc-detail">Kolkata, Bhubaneswar<br>North-East States &amp; More</div>
+        </div>
+        <div class="rc rev d3"><i class="fa-solid fa-arrow-trend-up rc-arrow"></i>
+          <div class="rc-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div class="rc-from">Special Zone</div>
+          <div class="rc-dest">All South India</div>
+          <div class="rc-detail">Kerala, Andhra Pradesh<br>Goa &amp; Coastal Routes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fleet-sec" id="fleet">
+    <div class="si">
+      <div class="fleet-layout">
+        <div class="fleet-sticky revl">
+          <div class="eyebrow">Our Fleet</div>
+          <h2 class="fleet-big-text">Right Truck<br>For Every<br><em
+              style="color:var(--or);font-style:normal">Load.</em></h2>
+          <p class="fleet-desc">We maintain a diverse fleet to handle any cargo size — from bulk full-container loads to
+            open flatbeds for oversized materials.</p>
+          <a href="https://wa.me/918950140919?text=Hello%2C%20I%20need%20help%20selecting%20a%20truck." class="btn-p"
+            target="_blank" style="margin-top:.5rem"><i class="fa-brands fa-whatsapp"></i>Ask About Fleet</a>
+          <div class="fleet-callout">
+            <div class="fleet-callout-t">Custom sizes available</div>
+            <div class="fleet-callout-s">Need something specific? We source the right vehicle for your cargo. Contact
+              Prop. Sunny Batra directly — no middlemen, no delays.</div>
+          </div>
+        </div>
+        <div class="fcards revr">
+          <div class="fc">
+            <div class="fc-emoji">🚛</div>
+            <div>
+              <div class="fc-name">32ft Container</div>
+              <div class="fc-desc">Full enclosed containers for large-volume cargo. Ideal for industrial goods, packaged
+                products, and sensitive shipments requiring weather protection.</div>
+              <div class="fc-tags"><span class="ftag">Heavy Load</span><span class="ftag">Enclosed</span><span
+                  class="ftag">Weather Safe</span></div>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fc-emoji">🚚</div>
+            <div>
+              <div class="fc-name">22ft Open Truck</div>
+              <div class="fc-desc">Open flatbed trucks for oversized, construction, or bulky materials. Flexible loading
+                from any side with no height restrictions. Perfect for steel, timber, machinery.</div>
+              <div class="fc-tags"><span class="ftag">Versatile</span><span class="ftag">Flatbed</span><span
+                  class="ftag">No Height Limit</span></div>
+            </div>
+          </div>
+          <div class="fc">
+            <div class="fc-emoji">🚐</div>
+            <div>
+              <div class="fc-name">All Sizes Available</div>
+              <div class="fc-desc">Mini trucks, medium trucks, and express vehicles available on demand. Whether your
+                shipment is small or massive, we match the right vehicle to your requirements.</div>
+              <div class="fc-tags"><span class="ftag">On Demand</span><span class="ftag">Mini Trucks</span><span
+                  class="ftag">Express</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-sec" id="why">
+    <div class="si">
+      <div class="why-layout">
+        <div>
+          <div class="sh">
+            <div class="eyebrow revl">Why Choose Us</div>
+            <h2 class="sec-title revl d1">The Conway<br><em style="color:var(--or);font-style:normal">Commitment</em>
+            </h2>
+            <p class="sec-sub revl d2">Years of road experience and a dedicated team make us the trusted freight partner
+              for businesses across India.</p>
+          </div>
+          <div class="wlist">
+            <div class="wi rev d1">
+              <div class="wi-n">01</div>
+              <div>
+                <div class="wi-title">Pan-India Reach</div>
+                <div class="wi-text">North, South, East, West — our growing network covers all major industrial and
+                  commercial cities across India without detours or delays.</div>
+              </div>
+            </div>
+            <div class="wi rev d2">
+              <div class="wi-n">02</div>
+              <div>
+                <div class="wi-title">On-Time Delivery</div>
+                <div class="wi-text">We respect your deadlines. Dedicated drivers and optimised routing ensure your
+                  cargo arrives exactly when expected, every single time.</div>
+              </div>
+            </div>
+            <div class="wi rev d3">
+              <div class="wi-n">03</div>
+              <div>
+                <div class="wi-title">Safe &amp; Secure Handling</div>
+                <div class="wi-text">Your cargo is treated with care from pickup to drop. Proper loading, securing, and
+                  end-to-end accountability for every shipment we carry.</div>
+              </div>
+            </div>
+            <div class="wi rev d4">
+              <div class="wi-n">04</div>
+              <div>
+                <div class="wi-title">Direct Proprietor Contact</div>
+                <div class="wi-text">Speak directly with Prop. Sunny Batra for personalised service. No call centers, no
+                  intermediaries — just honest, direct communication.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-right">
+          <div class="wcard accent rev d1"><span class="wcard-icon">🚀</span>
+            <div class="wcard-num">Fast</div>
+            <div class="wcard-lbl">Dispatch &amp; Delivery</div>
+          </div>
+          <div class="wcard rev d2"><span class="wcard-icon">🛡️</span>
+            <div class="wcard-num">100%</div>
+            <div class="wcard-lbl">Cargo Accountability</div>
+          </div>
+          <div class="wcard rev d3"><span class="wcard-icon">📦</span>
+            <div class="wcard-num">All</div>
+            <div class="wcard-lbl">Cargo Types Accepted</div>
+          </div>
+          <div class="wcard accent rev d4"><span class="wcard-icon">📞</span>
+            <div class="wcard-num">24/7</div>
+            <div class="wcard-lbl">Direct Phone Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="trust-inner">
+      <div class="trust-lbl">Trusted For</div>
+      <div class="trust-items">
+        <div class="trust-i"><i class="fa-solid fa-check-circle"></i> Industrial Goods</div>
+        <div class="trust-i"><i class="fa-solid fa-check-circle"></i> FMCG &amp; Retail</div>
+        <div class="trust-i"><i class="fa-solid fa-check-circle"></i> Construction Materials</div>
+        <div class="trust-i"><i class="fa-solid fa-check-circle"></i> Machinery &amp; Equipment</div>
+        <div class="trust-i"><i class="fa-solid fa-check-circle"></i> Textile &amp; Garments</div>
+        <div class="trust-i"><i class="fa-solid fa-check-circle"></i> Export Consignments</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-sec" id="location">
+    <div class="map-head rev">
+      <div class="eyebrow">Find Us</div>
+      <h2 class="sec-title">Our Location</h2>
+    </div>
+    <div class="map-wrap">
+      <div class="map-pin"><i class="fa-solid fa-location-dot"></i> Transport Nagar, Panipat — 132103</div>
+      <iframe class="map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3488.123456789!2d76.9699!3d29.3909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ddb59e9e9e9e9%3A0x1234567890abcdef!2sTransport%20Nagar%2C%20Sector%2025%2C%20Panipat%2C%20Haryana%20132103!5e0!3m2!1sen!2sin!4v1700000000000"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Con Way Freight Location"></iframe>
+    </div>
+    <div class="map-bar">
+      <div class="map-addr"><i class="fa-solid fa-location-dot"></i> Shop No. 295, Sector 25, Transport Nagar, Panipat,
+        Haryana — 132103</div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Transport+Nagar+Sector+25+Panipat+Haryana+132103"
+        target="_blank" class="btn-dir"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+    </div>
+  </div>
+
+  <section class="contact-sec" id="contact">
+    <div class="si">
+      <div class="sh">
+        <div class="eyebrow rev">Contact Us</div>
+        <h2 class="sec-title rev d1">Let's Move Your<br><em style="color:var(--or);font-style:normal">Cargo Today</em>
+        </h2>
+      </div>
+      <div class="csplit">
+        <div class="revl">
+          <p class="sec-sub" style="margin-bottom:0">Reach out to book a truck, get a quote, or ask anything about our
+            services. We respond fast — usually within minutes on WhatsApp.</p>
+          <div class="cinfo-items">
+            <div class="crow">
+              <div class="crow-icon"><i class="fa-solid fa-building"></i></div>
+              <div>
+                <div class="crow-lbl">Company</div>
+                <div class="crow-val">Con Way Freight Carrier</div>
+              </div>
+            </div>
+            <div class="crow">
+              <div class="crow-icon"><i class="fa-solid fa-user-tie"></i></div>
+              <div>
+                <div class="crow-lbl">Proprietor</div>
+                <div class="crow-val">Sunny Batra</div>
+              </div>
+            </div>
+            <div class="crow">
+              <div class="crow-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="crow-lbl">Address</div>
+                <div class="crow-val">Shop No. 295, Sector 25<br>Transport Nagar, Panipat<br>Haryana — 132103</div>
+              </div>
+            </div>
+            <div class="crow">
+              <div class="crow-icon" style="background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.2)"><i
+                  class="fa-brands fa-whatsapp" style="color:var(--wg)"></i></div>
+              <div>
+                <div class="crow-lbl">WhatsApp / Call</div>
+                <div class="wa-links">
+                  <a href="https://wa.me/918950140919?text=Hello%20Con%20Way%20Freight%2C%20I%20need%20a%20freight%20quote."
+                    class="wa-link" target="_blank"><i class="fa-brands fa-whatsapp"></i> +91 89501 40919</a>
+                  <a href="https://wa.me/918708520360?text=Hello%20Con%20Way%20Freight%2C%20I%20need%20a%20freight%20quote."
+                    class="wa-link" target="_blank"><i class="fa-brands fa-whatsapp"></i> +91 87085 20360</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cform revr">
+          <div class="ftitle">Quick Enquiry</div>
+          <div class="f2col">
+            <div class="frow"><label>Your Name</label><input type="text" id="fn" placeholder="Enter your name"></div>
+            <div class="frow"><label>Phone Number</label><input type="tel" id="fp" placeholder="+91 XXXXX XXXXX"></div>
+          </div>
+          <div class="frow"><label>Route Required</label><select id="fr">
+              <option>Panipat → Mumbai</option>
+              <option>Panipat → Bangalore</option>
+              <option>Panipat → Chennai</option>
+              <option>Panipat → Hyderabad</option>
+              <option>All South India</option>
+              <option>All East India</option>
+              <option>Other / Custom Route</option>
+            </select></div>
+          <div class="frow"><label>Truck Type</label><select id="ft">
+              <option>32ft Container</option>
+              <option>22ft Open Truck</option>
+              <option>Other / Discuss</option>
+            </select></div>
+          <div class="frow"><label>Message (optional)</label><textarea id="fm"
+              placeholder="Describe your cargo or special requirements…"></textarea></div>
+          <div class="factions">
+            <button class="fbtn fbtn-or" onclick="submitForm()">Send Enquiry</button>
+            <button class="fbtn fbtn-wa" onclick="sendWA()"><i class="fa-brands fa-whatsapp"></i> Via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-in">
+      <div class="ftop">
+        <div class="fbrand">
+          <div class="flogo">Con<span>Way</span> Freight</div>
+          <div class="ftagline">Pan-India freight solutions from Panipat to every corner of the country. Reliable.
+            Direct. On time.</div>
+        </div>
+        <div class="fgroup">
+          <div class="fgroup-title">Quick Links</div><a href="#routes">Our Routes</a><a href="#fleet">Our Fleet</a><a
+            href="#why">Why Us</a><a href="#location">Location</a><a href="#contact">Contact</a>
+        </div>
+        <div class="fgroup">
+          <div class="fgroup-title">Routes</div><a href="#routes">Panipat → Mumbai</a><a href="#routes">Panipat →
+            Bangalore</a><a href="#routes">Panipat → Chennai</a><a href="#routes">All South India</a><a
+            href="#routes">All East India</a>
+        </div>
+        <div class="fgroup">
+          <div class="fgroup-title">Contact</div><a href="https://wa.me/918950140919" target="_blank">+91 89501
+            40919</a><a href="https://wa.me/918708520360" target="_blank">+91 87085 20360</a><a href="#location">Shop
+            No. 295, Sector 25</a><a href="#location">Transport Nagar, Panipat</a>
+        </div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2025 Con Way Freight Carrier. All rights reserved. Prop. Sunny Batra.</div>
+        <a href="https://wa.me/918950140919?text=Hello%20Con%20Way%20Freight!" class="fwa" target="_blank"><i
+            class="fa-brands fa-whatsapp"></i> Chat with us on WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chlauncher" id="chatLauncher">
+    <div class="chlbl">Ask our AI Assistant</div>
+    <button class="chbtn" id="chatToggleBtn" onclick="toggleChat()" aria-label="AI Chat">
+      <i class="fa-solid fa-robot" id="chatIcon"></i>
+      <span class="chudot" id="chatDot"></span>
+    </button>
+  </div>
+
+  <div class="chwin" id="chatWin">
+    <div class="chhead">
+      <div class="chhead-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <div>
+        <div class="chname">Con Way Assistant</div>
+        <div class="chstatus">Online — Ask me anything</div>
+      </div>
+      <button class="chclose" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="chmsgs" id="chatMsgs"></div>
+    <div class="chqr" id="chatQR"></div>
+    <div class="chinput-area">
+      <textarea class="chinput" id="chatIn" placeholder="Type your question…" rows="1"
+        onkeydown="chatKey(event)"></textarea>
+      <button class="chsend" id="chatSendBtn" onclick="sendMsg()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <div class="wafloat">
+    <div class="walbl">Chat on WhatsApp</div>
+    <a href="https://wa.me/918950140919?text=Hello%20Con%20Way%20Freight%2C%20I%20need%20a%20freight%20quote."
+      class="wabtn" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+
+  <div class="toast" id="toast"><i class="fa-solid fa-circle-check" id="toastIcon"></i><span id="toastTxt">Done!</span>
+  </div>
+
+  <script>
+    const nb = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { nb.classList.toggle('scrolled', window.scrollY > 60) }, { passive: true });
+    let mnavOpen = false;
+    function toggleMNav() { mnavOpen = !mnavOpen; document.getElementById('mobileNav').classList.toggle('open', mnavOpen); document.getElementById('burgerIcon').className = mnavOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'; }
+    function closeMNav() { mnavOpen = false; document.getElementById('mobileNav').classList.remove('open'); document.getElementById('burgerIcon').className = 'fa-solid fa-bars'; }
+    const spySections = ['routes', 'fleet', 'why', 'location', 'contact'];
+    const spyLinks = document.querySelectorAll('.nav-links a,.mnav a[href^="#"]');
+    window.addEventListener('scroll', () => { let cur = ''; spySections.forEach(id => { const el = document.getElementById(id); if (el && window.scrollY >= el.offsetTop - 120) cur = id; }); spyLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur)); }, { passive: true });
+    const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.rev,.revl,.revr').forEach(el => ro.observe(el));
+    const co = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; const el = e.target; const target = +el.dataset.target; let cur = 0; const inc = target / (1600 / 16); const timer = setInterval(() => { cur = Math.min(cur + inc, target); el.textContent = Math.floor(cur); if (cur >= target) clearInterval(timer); }, 16); co.unobserve(el); }); }, { threshold: 0.5 });
+    document.querySelectorAll('.sn').forEach(el => co.observe(el));
+    function showToast(msg, isErr = false) { const t = document.getElementById('toast'); document.getElementById('toastTxt').textContent = msg; document.getElementById('toastIcon').className = isErr ? 'fa-solid fa-circle-xmark' : 'fa-solid fa-circle-check'; t.classList.toggle('err', isErr); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3400); }
+    function sendWA() { const n = document.getElementById('fn').value.trim(); const p = document.getElementById('fp').value.trim(); if (!n) { showToast('Please enter your name.', true); document.getElementById('fn').focus(); return; } if (!p) { showToast('Please enter your phone number.', true); document.getElementById('fp').focus(); return; } const r = document.getElementById('fr').value; const tr = document.getElementById('ft').value; const m = document.getElementById('fm').value.trim(); const txt = `Hello Con Way Freight Carrier!\n\nName: ${n}\nPhone: ${p}\nRoute: ${r}\nTruck: ${tr}${m ? '\nMessage: ' + m : ''}`; window.open('https://wa.me/918950140919?text=' + encodeURIComponent(txt), '_blank'); showToast('Opening WhatsApp with your enquiry…'); }
+    function submitForm() { const n = document.getElementById('fn').value.trim(); const p = document.getElementById('fp').value.trim(); if (!n) { showToast('Please enter your name.', true); return; } if (!p) { showToast('Please enter your phone.', true); return; } sendWA(); document.getElementById('fn').value = ''; document.getElementById('fp').value = ''; document.getElementById('fm').value = ''; }
+    // ── Rule-based Chatbot Engine ──────────────────────────────────────────────
+    const INTENTS = [
+      {
+        tags: ['hello', 'hi', 'hey', 'namaste', 'hola', 'good morning', 'good afternoon', 'good evening', 'start', 'help'],
+        response: "👋 Hello! Welcome to Con Way Freight Carrier. I can help you with:\n• Routes & destinations\n• Truck sizes & fleet\n• Booking & quotes\n• Transit times\n• Contact & location\n\nWhat would you like to know?",
+        follow: ["What routes do you cover?", "How to get a quote?", "Truck sizes available?"]
+      },
+      {
+        tags: ['route', 'routes', 'destination', 'destinations', 'cover', 'covering', 'where', 'cities', 'city', 'deliver', 'delivery', 'deliver to', 'from panipat', 'panipat to'],
+        response: "🗺️ We operate Pan-India routes from our Panipat hub:\n\n• Panipat → Mumbai (West India)\n• Panipat → Bangalore (South India)\n• Panipat → Chennai (South India)\n• Panipat → Hyderabad (South India)\n• Panipat → All East India (Kolkata, Bhubaneswar, North-East)\n• Panipat → All South India (Kerala, Andhra, Goa)\n• All North India coverage\n\nNeed a specific route? WhatsApp us at +91 89501 40919.",
+        follow: ["How to book?", "Transit time?", "Get a quote"]
+      },
+      {
+        tags: ['mumbai', 'bombay', 'maharashtra'],
+        response: "📦 Panipat → Mumbai: We run regular freight services to Mumbai covering industrial and commercial cargo. Typical transit: 3-4 days. For a quote, WhatsApp +91 89501 40919.",
+        follow: ["What truck sizes?", "Book a shipment", "More routes"]
+      },
+      {
+        tags: ['bangalore', 'bengaluru', 'karnataka'],
+        response: "📦 Panipat → Bangalore: Regular services for tech, manufacturing, and industrial cargo to Karnataka. Typical transit: 4-5 days. WhatsApp +91 89501 40919 for rates.",
+        follow: ["What truck sizes?", "Book a shipment", "More routes"]
+      },
+      {
+        tags: ['chennai', 'tamil', 'tamilnadu', 'madras'],
+        response: "📦 Panipat → Chennai: Port & export logistics to Tamil Nadu. Typical transit: 4-5 days. Great for textile and manufacturing shipments. WhatsApp +91 89501 40919 for rates.",
+        follow: ["What truck sizes?", "Book a shipment", "More routes"]
+      },
+      {
+        tags: ['hyderabad', 'telangana', 'secunderabad'],
+        response: "📦 Panipat → Hyderabad: All-India gateway city coverage in Telangana. Typical transit: 3-4 days. WhatsApp +91 89501 40919 for a quote.",
+        follow: ["What truck sizes?", "Book a shipment", "More routes"]
+      },
+      {
+        tags: ['kolkata', 'west bengal', 'east india', 'bhubaneswar', 'odisha', 'north east', 'northeast', 'assam'],
+        response: "📦 East India Coverage: We serve Kolkata, Bhubaneswar, North-East states and more. Typical transit: 4-6 days. WhatsApp +91 89501 40919 for specific routes and rates.",
+        follow: ["What truck sizes?", "Book a shipment", "More routes"]
+      },
+      {
+        tags: ['kerala', 'andhra', 'goa', 'coastal', 'south india'],
+        response: "📦 All South India: We cover Kerala, Andhra Pradesh, Goa, and all coastal routes. Typical transit: 5-7 days. WhatsApp +91 89501 40919 for your specific destination.",
+        follow: ["What truck sizes?", "Book a shipment", "More routes"]
+      },
+      {
+        tags: ['truck', 'fleet', 'vehicle', 'size', '32', '22', 'container', 'open', 'flatbed', 'mini', 'express', 'small truck', 'big truck', 'what truck'],
+        response: "🚛 Our Fleet Options:\n\n1. 32ft Container — Full enclosed, weather-safe for industrial & packaged goods (heavy loads)\n2. 22ft Open Truck — Flatbed for oversized/construction cargo; no height limits\n3. Mini & Express Trucks — Available on demand for smaller shipments\n\nNot sure which to use? WhatsApp Prop. Sunny Batra at +91 89501 40919 for advice.",
+        follow: ["Get a quote", "Book a shipment", "Transit time?"]
+      },
+      {
+        tags: ['32ft', '32 ft', 'container truck', 'closed truck', 'enclosed'],
+        response: "🚛 32ft Container: Full enclosed truck, weather-safe and secure. Best for industrial goods, packaged products, FMCG, textiles. Can carry heavy loads across India. Contact us at +91 89501 40919 for availability.",
+        follow: ["22ft open truck", "Get a quote", "Book a shipment"]
+      },
+      {
+        tags: ['22ft', '22 ft', 'open truck', 'flatbed', 'open body'],
+        response: "🚚 22ft Open Truck: Flatbed truck with no height restrictions. Ideal for steel, timber, machinery, construction materials. Load from any side. Available across all our routes. Call +91 89501 40919 for availability.",
+        follow: ["32ft container", "Get a quote", "Book a shipment"]
+      },
+      {
+        tags: ['book', 'booking', 'shipment', 'ship', 'schedule', 'arrange', 'hire', 'order', 'load'],
+        response: "📋 Booking is simple! Here's how:\n\n1️⃣ Fill the Quick Enquiry form on this page\n2️⃣ OR WhatsApp us directly: +91 89501 40919\n3️⃣ OR call Prop. Sunny Batra directly\n\nProvide: Origin → Destination, cargo type, approximate weight/volume, and preferred date. We'll confirm availability fast!",
+        follow: ["Get a quote", "Contact details", "What routes?"]
+      },
+      {
+        tags: ['quote', 'price', 'rate', 'cost', 'charge', 'how much', 'pricing', 'fare', 'tariff', 'estimate'],
+        response: "💰 For an accurate freight quote, we need:\n• Route (From → To)\n• Truck type (32ft/22ft/Mini)\n• Cargo type & approximate weight\n• Pickup date\n\nWhatsApp +91 89501 40919 or +91 87085 20360 with these details and we'll send you a quote quickly — usually within minutes!",
+        follow: ["What routes?", "What truck sizes?", "Contact details"]
+      },
+      {
+        tags: ['transit', 'time', 'days', 'how long', 'duration', 'eta', 'arrive', 'delivery time', 'when'],
+        response: "⏱️ Estimated Transit Times from Panipat:\n\n• → Mumbai: 3-4 days\n• → Bangalore: 4-5 days\n• → Chennai: 4-5 days\n• → Hyderabad: 3-4 days\n• → East India: 4-6 days\n• → South India: 5-7 days\n\nTimes may vary by load and road conditions. WhatsApp +91 89501 40919 for a confirmed ETA for your shipment.",
+        follow: ["Book a shipment", "Get a quote", "Contact details"]
+      },
+      {
+        tags: ['contact', 'phone', 'number', 'call', 'whatsapp', 'reach', 'touch', 'talk', 'speak'],
+        response: "📞 Contact Con Way Freight Carrier:\n\n📱 WhatsApp/Call: +91 89501 40919\n📱 WhatsApp/Call: +91 87085 20360\n👤 Proprietor: Sunny Batra\n📍 Shop No. 295, Sector 25, Transport Nagar, Panipat, Haryana — 132103\n\nWe respond fast — usually within minutes on WhatsApp!",
+        follow: ["Book a shipment", "Get a quote", "What routes?"]
+      },
+      {
+        tags: ['address', 'location', 'office', 'where are you', 'transport nagar', 'panipat', 'haryana', 'sector 25'],
+        response: "📍 Our Office:\nShop No. 295, Sector 25\nTransport Nagar, Panipat\nHaryana — 132103\n\nEasily accessible from the main Transport Nagar hub. For directions, use the map on this page or WhatsApp us at +91 89501 40919.",
+        follow: ["Contact details", "Book a shipment", "Get a quote"]
+      },
+      {
+        tags: ['safe', 'safety', 'secure', 'damage', 'insurance', 'protect', 'care', 'fragile', 'breakable'],
+        response: "🛡️ Your cargo safety is our top priority:\n• Proper loading & securing for every shipment\n• Weather-protected 32ft containers available\n• End-to-end accountability\n• Direct proprietor oversight — no middlemen\n\nFor fragile or special cargo, WhatsApp +91 89501 40919 so we can arrange appropriate handling.",
+        follow: ["What truck sizes?", "Book a shipment", "Contact details"]
+      },
+      {
+        tags: ['cargo', 'goods', 'material', 'product', 'textile', 'fmcg', 'steel', 'machinery', 'construction', 'industrial', 'export'],
+        response: "📦 We handle all types of cargo:\n✅ Industrial Goods\n✅ FMCG & Retail\n✅ Construction Materials (steel, timber)\n✅ Machinery & Equipment\n✅ Textiles & Apparel\n✅ Export Consignments\n\nNot sure if we can handle your specific cargo? WhatsApp +91 89501 40919 and we'll advise.",
+        follow: ["What truck sizes?", "Get a quote", "Book a shipment"]
+      },
+      {
+        tags: ['sunny', 'batra', 'proprietor', 'owner', 'director', 'boss', 'prop'],
+        response: "👤 Prop. Sunny Batra is the proprietor of Con Way Freight Carrier. You can speak directly with him — no call centers, no intermediaries. WhatsApp or call +91 89501 40919 for personalized service.",
+        follow: ["Contact details", "Book a shipment", "Get a quote"]
+      },
+      {
+        tags: ['company', 'about', 'who are you', 'con way', 'conway', 'freight carrier', 'business', 'established'],
+        response: "🏢 Con Way Freight Carrier is a Pan-India freight & logistics company headquartered in Panipat, Haryana. We provide reliable road freight solutions across India — from North to South, East to West. Operated by Prop. Sunny Batra with a focus on direct service, on-time delivery, and cargo safety.",
+        follow: ["What routes?", "What truck sizes?", "Contact details"]
+      },
+      {
+        tags: ['thank', 'thanks', 'thankyou', 'thank you', 'great', 'awesome', 'perfect', 'good', 'excellent', 'helpful'],
+        response: "😊 You're welcome! We're always happy to help. For bookings or any further queries, don't hesitate to WhatsApp us at +91 89501 40919. Have a great day! 🚛",
+        follow: ["Book a shipment", "Get a quote", "Contact details"]
+      },
+      {
+        tags: ['bye', 'goodbye', 'ok', 'okay', 'see you', 'later', 'done', 'nothing', 'no more'],
+        response: "👋 Thank you for contacting Con Way Freight Carrier! For bookings anytime, WhatsApp us at +91 89501 40919. Safe travels! 🚛",
+        follow: []
+      }
+    ];
+
+    const DEFAULT_RESPONSE = {
+      text: "🤔 I'm not sure I understood that. I can help you with:\n• Routes & destinations\n• Truck sizes & fleet\n• Booking a shipment\n• Getting a quote\n• Transit time estimates\n• Contact information\n\nOr WhatsApp us directly: +91 89501 40919",
+      follow: ["What routes do you cover?", "How to book?", "Get a quote", "Contact details"]
+    };
+
+    function getBotReply(input) {
+      const q = input.toLowerCase().trim();
+      for (const intent of INTENTS) {
+        if (intent.tags.some(tag => q.includes(tag))) {
+          return { text: intent.response, follow: intent.follow || [] };
+        }
+      }
+      return { text: DEFAULT_RESPONSE.text, follow: DEFAULT_RESPONSE.follow };
+    }
+
+    let chatOpen = false, chatTyping = false;
+    const qrs = ["What routes do you cover?", "What truck sizes available?", "How to book a shipment?", "Transit time estimate?", "Contact details"];
+
+    function toggleChat() {
+      const w = document.getElementById('chatWin');
+      const ic = document.getElementById('chatIcon');
+      const dt = document.getElementById('chatDot');
+      chatOpen = !chatOpen;
+      w.classList.toggle('open', chatOpen);
+      ic.className = chatOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-robot';
+      if (chatOpen) {
+        dt.classList.remove('show');
+        if (document.getElementById('chatMsgs').children.length === 0) {
+          setTimeout(() => addBot("👋 Hi! I'm the Con Way Freight Assistant. I can help with routes, fleet, bookings & more. What would you like to know?"), 400);
+          setTimeout(() => showQR(qrs), 900);
+        }
+        setTimeout(() => document.getElementById('chatIn').focus(), 300);
+      }
+    }
+
+    function showQR(opts) {
+      const c = document.getElementById('chatQR');
+      c.innerHTML = '';
+      opts.forEach(o => {
+        const b = document.createElement('button');
+        b.className = 'chqrb';
+        b.textContent = o;
+        b.onclick = () => { c.innerHTML = ''; doSend(o); };
+        c.appendChild(b);
+      });
+    }
+
+    function addBot(txt) {
+      const m = document.getElementById('chatMsgs');
+      const b = document.createElement('div');
+      b.className = 'cbbl bot';
+      b.style.whiteSpace = 'pre-line';
+      b.textContent = txt;
+      m.appendChild(b);
+      m.scrollTop = m.scrollHeight;
+    }
+
+    function addUser(txt) {
+      const m = document.getElementById('chatMsgs');
+      const b = document.createElement('div');
+      b.className = 'cbbl user';
+      b.textContent = txt;
+      m.appendChild(b);
+      m.scrollTop = m.scrollHeight;
+    }
+
+    function showTyp() {
+      const m = document.getElementById('chatMsgs');
+      const b = document.createElement('div');
+      b.className = 'cbbl typing';
+      b.id = 'typingBbl';
+      b.innerHTML = '<div class="tdots"><span></span><span></span><span></span></div>';
+      m.appendChild(b);
+      m.scrollTop = m.scrollHeight;
+    }
+
+    function hideTyp() { const el = document.getElementById('typingBbl'); if (el) el.remove(); }
+
+    function chatKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); } }
+
+    function sendMsg() {
+      const inp = document.getElementById('chatIn');
+      const txt = inp.value.trim();
+      if (!txt || chatTyping) return;
+      inp.value = '';
+      document.getElementById('chatQR').innerHTML = '';
+      doSend(txt);
+    }
+
+    function doSend(txt) {
+      if (chatTyping) return;
+      chatTyping = true;
+      document.getElementById('chatSendBtn').disabled = true;
+      addUser(txt);
+      showTyp();
+      const delay = 600 + Math.random() * 600;
+      setTimeout(() => {
+        hideTyp();
+        const reply = getBotReply(txt);
+        addBot(reply.text);
+        if (reply.follow && reply.follow.length > 0) {
+          setTimeout(() => showQR(reply.follow), 300);
+        }
+        chatTyping = false;
+        document.getElementById('chatSendBtn').disabled = false;
+        document.getElementById('chatIn').focus();
+      }, delay);
+    }
+
+    setTimeout(() => { if (!chatOpen) document.getElementById('chatDot').classList.add('show'); }, 3000);
+  </script>
+</body>
+
+</html>
